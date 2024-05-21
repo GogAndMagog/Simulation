@@ -3,6 +3,7 @@ package org.simulation.model.entities.dynamic.carnivore;
 import com.sun.jdi.ClassType;
 import org.simulation.model.coordinates.Coordinates;
 import org.simulation.model.entities.Entity;
+import org.simulation.model.entities.Icons;
 import org.simulation.model.entities.WorldMap;
 import org.simulation.model.entities.dynamic.Creature;
 import org.simulation.model.entities.dynamic.herbivore.Herbivore;
@@ -13,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class Wolf extends Carnivore {
-    private final String ICON = "\uD83D\uDC3A";
     private int visionRange = 10;
 
     public static void main(String[] args) {
@@ -24,7 +24,6 @@ public class Wolf extends Carnivore {
         wp.setCreature(wolf);
         wp.setCreature(new Wolf(new Coordinates(0, 0), 5, 1));
         wp.setCreature(new Wolf(new Coordinates(1, 0), 5, 1));
-
 
         wolf.chooseClosest(wolf.getDistancesToCreatures(wolf.getPosition(), wp, Wolf.class))
                 .ifPresent(System.out::println);
@@ -74,7 +73,7 @@ public class Wolf extends Carnivore {
     private Optional<Coordinates> chooseTarget() {
         var ableDirections = checkDirections(this.getPosition());
 
-        return null;
+        return Optional.empty();
     }
 
     private Coordinates chooseRandomDirection() {
@@ -83,6 +82,6 @@ public class Wolf extends Carnivore {
 
     @Override
     public String getIcon() {
-        return ICON;
+        return Icons.ICON_WOLF;
     }
 }

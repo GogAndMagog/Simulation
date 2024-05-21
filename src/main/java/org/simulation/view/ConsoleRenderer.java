@@ -3,6 +3,8 @@ package org.simulation.view;
 import org.simulation.model.coordinates.*;
 import org.simulation.model.entities.WorldMap;
 
+import javax.annotation.processing.SupportedSourceVersion;
+
 public class ConsoleRenderer implements Renderer {
 
     private static final String BLANK = " ";
@@ -23,63 +25,6 @@ public class ConsoleRenderer implements Renderer {
         String TREE = "\uD83C\uDF33";
         StringBuilder sb = new StringBuilder();
 
-        sb.append(ANSI_GREEN_BACKGROUND)
-                .append(WOLF)
-                .append(ANSI_RESET)
-                .append(MOUNTAIN)
-                .append(ANSI_GREEN_BACKGROUND)
-                .append(LAMB)
-                .append(ANSI_RESET)
-                .append(SNOW_MOUNTAIN)
-                .append(ANSI_GREEN_BACKGROUND)
-                .append(WOLF)
-                .append(WOLF)
-                .append(ANSI_RESET);
-        System.out.println(sb.toString());
-
-        sb.setLength(0);
-        sb.append(SNOW_MOUNTAIN)
-                .append(SNOW_MOUNTAIN)
-                .append(SNOW_MOUNTAIN)
-                .append(SNOW_MOUNTAIN)
-                .append(SNOW_MOUNTAIN)
-                .append(SNOW_MOUNTAIN);
-        System.out.println(sb.toString());
-
-        sb.setLength(0);
-        sb.append(ANSI_GREEN_BACKGROUND)
-                .append(HERB)
-                .append(HERB)
-                .append(HERB)
-                .append(HERB)
-                .append(HERB)
-                .append(HERB)
-                .append(ANSI_RESET);
-        System.out.println(sb.toString());
-
-        sb.setLength(0);
-        sb.
-//                append(ANSI_GREEN_BACKGROUND)
-        append(TREE)
-                .append(TREE)
-                .append(TREE)
-                .append(TREE)
-                .append(TREE)
-                .append(TREE);
-//                .append(ANSI_RESET);
-        System.out.println(sb.toString());
-
-        sb.setLength(0);
-        sb.
-//                append(ANSI_GREEN_BACKGROUND)
-        append(GREEN_SQUARE)
-                .append(GREEN_SQUARE)
-                .append(GREEN_SQUARE)
-                .append(GREEN_SQUARE)
-                .append(GREEN_SQUARE)
-                .append(GREEN_SQUARE);
-        System.out.println(sb.toString());
-
     }
 
     WorldMap worldMap;
@@ -92,6 +37,9 @@ public class ConsoleRenderer implements Renderer {
     public void render() {
         StringBuilder sb = new StringBuilder();
         Coordinates currentPosition;
+
+        sb.append("##".repeat(worldMap.getX()));
+        sb.append(System.lineSeparator());
 
         for (int i = 0; i < worldMap.getY(); i++) {
             for (int j = 0; j < worldMap.getX(); j++) {
@@ -107,7 +55,6 @@ public class ConsoleRenderer implements Renderer {
             sb.append(System.lineSeparator());
         }
 
-        System.out.print("\r" + sb.toString());
-//        System.out.print(sb);
+        System.out.print(sb);
     }
 }

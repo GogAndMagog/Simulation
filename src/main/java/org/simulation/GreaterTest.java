@@ -24,7 +24,6 @@ public class GreaterTest {
         Renderer renderer = new ConsoleRenderer(worldMap);
         renderer.render();
 
-
         Creature wolf = worldMap.getCreatures().remove(new Coordinates(2, 0));
         wolf.makeMove();
         worldMap.setCreature(wolf);
