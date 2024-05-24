@@ -16,8 +16,8 @@ public class Graph {
         int y = 3;
 
         WorldMap map = new WorldMap(x, y);
-        map.setCreature(new Wolf(new Coordinates(0, 0), 2, 10));
-        map.setCreature(new Wolf(new Coordinates(2, 2), 2, 10));
+        map.setCreature(new Wolf(new Coordinates(0, 0), 2, 10, 2));
+        map.setCreature(new Wolf(new Coordinates(2, 2), 2, 10, 2));
         map.setLandscapeObject(new Rock(new Coordinates(1, 1)));
 
         Graph graph = new Graph();

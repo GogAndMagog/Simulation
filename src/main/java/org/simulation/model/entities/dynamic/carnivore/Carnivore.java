@@ -5,11 +5,20 @@ import org.simulation.model.entities.WorldMap;
 import org.simulation.model.entities.dynamic.Creature;
 
 public abstract class Carnivore extends Creature {
-    public Carnivore(Coordinates position, int speed, int hp) {
+    private int attack;
+
+    public Carnivore(Coordinates position, int speed, int hp, int attack) {
         super(position, speed, hp);
+        this.attack = attack;
     }
 
-    public Carnivore(Coordinates position, WorldMap worldMap, int speed, int hp) {
+    public Carnivore(Coordinates position, WorldMap worldMap, int speed, int hp, int attack) {
         super(position, worldMap, speed, hp);
+        this.attack = attack;
+    }
+
+    protected void attack(Creature creature)
+    {
+        creature.takeDamage(attack);
     }
 }

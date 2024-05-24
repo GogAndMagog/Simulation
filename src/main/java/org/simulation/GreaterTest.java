@@ -19,7 +19,7 @@ public class GreaterTest {
         worldMap.setLandscapeObject(new Tree(new Coordinates(1, 2)));
         worldMap.setLandscapeObject(new Tree(new Coordinates(2, 2)));
 //        worldMap.setLandscapeObject(new Herb(new Coordinates(1, 1)));
-        worldMap.setCreature(new Wolf(new Coordinates(2, 0), 5, 10));
+        worldMap.setCreature(new Wolf(new Coordinates(2, 0), 5, 10, 2));
 
         Renderer renderer = new ConsoleRenderer(worldMap);
         renderer.render();

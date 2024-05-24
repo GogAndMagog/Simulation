@@ -2,7 +2,6 @@ package org.simulation.model.entities;
 
 import org.simulation.model.coordinates.Coordinates;
 import org.simulation.model.entities.dynamic.Creature;
-import org.simulation.model.entities.searchstructs.Node;
 import org.simulation.model.entities.statical.LandscapeObject;
 import org.simulation.model.entities.statical.Terrain;
 
@@ -28,20 +27,16 @@ public class WorldMap {
         return y;
     }
 
-    public boolean setLandscapeObject(LandscapeObject object) {
+    public void setLandscapeObject(LandscapeObject object) {
         if (checkOutOfField(object.getPosition())) {
             landscape.put(object.getPosition(), object);
-            return true;
-        } else
-            return false;
+        }
     }
 
-    public boolean setCreature(Creature creature) {
+    public void setCreature(Creature creature) {
         if (checkOutOfField(creature.getPosition())) {
             creatures.put(creature.getPosition(), creature);
-            return true;
-        } else
-            return false;
+        }
     }
 
     public Map<Coordinates, LandscapeObject> getLandscape() {
@@ -52,6 +47,40 @@ public class WorldMap {
         return creatures;
     }
 
+    public void removeCreature(Coordinates position) {
+        creatures.remove(position);
+    }
+
+    public void removeLandscapeObjet(Coordinates position) {
+        landscape.remove(position);
+    }
+
+    private double calculateLength(Coordinates current, Coordinates target) {
+        double length = 0.0;
+        length = Math.sqrt(Math.pow((current.getX() - target.getX()), 2)
+                + Math.pow((current.getY() - target.getY()), 2));
+
+        return length;
+    }
+
+    private Map<Coordinates, Double> getDistancesToTarget(Coordinates currentPosition, Class target) {
+        Map<Coordinates, Double> creaturesDistances = new HashMap<>();
+
+        creatures.values().stream()
+                .filter(target::isInstance)
+                .filter(creature -> creature.getPosition() != currentPosition)
+                .forEach(creature -> creaturesDistances.put(creature.getPosition(), calculateLength(currentPosition, creature.getPosition())));
+
+        return creaturesDistances;
+    }
+
+    public Optional<Coordinates> getClosest(Coordinates currentPosition, Class target) {
+        return getDistancesToTarget(currentPosition, target)
+                .entrySet()
+                .stream().min(Comparator.comparingDouble(Map.Entry::getValue))
+                .map(creature -> creature.getKey());
+    }
+
     public List<Coordinates> getNeighbours(Coordinates coordinates, Coordinates target) {
         List<Coordinates> neighbors = new ArrayList<>();
 
@@ -60,7 +89,7 @@ public class WorldMap {
             neighbors.add(tmpPosition);
 
         tmpPosition = new Coordinates(coordinates.getX() + 1, coordinates.getY() - 1);
-        if (isAccessible(tmpPosition,target))
+        if (isAccessible(tmpPosition, target))
             neighbors.add(tmpPosition);
 
         tmpPosition = new Coordinates(coordinates.getX() + 1, coordinates.getY());

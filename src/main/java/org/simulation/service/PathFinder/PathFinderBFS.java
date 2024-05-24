@@ -16,7 +16,7 @@ public class PathFinderBFS implements PathFinder {
         int y = 4;
 
         WorldMap map = new WorldMap(x, y);
-        map.setCreature(new Wolf(new Coordinates(0, 0), 2, 10));
+        map.setCreature(new Wolf(new Coordinates(0, 0), 2, 10, 2));
 //        map.setCreature(new Wolf(new Coordinates(2, 2), 2, 10));
 //        map.setLandscapeObject(new Rock(new Coordinates(2, 0)));
         map.setLandscapeObject(new Rock(new Coordinates(2, 1)));
@@ -54,8 +54,7 @@ public class PathFinderBFS implements PathFinder {
             for (var child : curNode.getChildren()) {
                 if (!child.isVisited()) {
                     path.add(child);
-                }
-                else
+                } else
                     continue;
 
                 if (child.getParent() == null) {
@@ -69,6 +68,7 @@ public class PathFinderBFS implements PathFinder {
                 result.add(curNode.getPosition());
                 curNode = curNode.getParent();
             }
+            Collections.reverse(result);
         }
 
         return result;
