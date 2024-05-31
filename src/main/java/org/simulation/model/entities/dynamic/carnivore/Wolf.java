@@ -26,35 +26,6 @@ public class Wolf extends Carnivore {
         wp.setCreature(wolf);
         wp.setCreature(new Wolf(new Coordinates(0, 0), 5, 1, 2));
         wp.setCreature(new Wolf(new Coordinates(1, 0), 5, 1, 2));
-
-//        wolf.chooseClosest(wolf.getDistancesToCreatures(wolf.getPosition(), wp, Wolf.class))
-//                .ifPresent(System.out::println);
-//                .forEach((creature, aDouble) ->
-//                {
-//                    StringBuilder sb = new StringBuilder();
-//                    sb.append("Creature: ")
-//                            .append(creature.getIcon())
-//                            .append(" Position: ")
-//                            .append(creature.getPosition())
-//                            .append(" Distance: ")
-//                            .append(aDouble);
-//                    System.out.println(sb);
-//                });
-
-
-//        Class className = Creature.class;
-//        Class<Creature> classNameGeneric = Creature.class;
-//
-//        System.out.println(className.isInstance(wolf));
-//
-//        className = Carnivore.class;
-//
-//        System.out.println(className.isInstance(wolf));
-//
-//        className = Herbivore.class;
-//
-//        System.out.println(className.isInstance(wolf));
-
     }
 
     public Wolf(Coordinates position, int speed, int hp, int attack) {
@@ -76,15 +47,26 @@ public class Wolf extends Carnivore {
         var closest = worldMap.getClosest(this.position, Herbivore.class);
         if (closest.isPresent()) {
             path = pathFinder.findPath(this.position, closest.get(), worldMap);
+            if (path.size() > 0) {
+                path.removeLast();
+                path.removeFirst();
+            }
+        }
+        else {
+            chooseRandomDirection();
         }
 
         var pathIterator = path.iterator();
-        while (actionPoints > 0) {
+        while (actionPoints > 0 && pathIterator.hasNext()) {
             newPosition = pathIterator.next();
             actionPoints--;
         }
 
+        this.worldMap.removeCreature(this.position);
         this.setPosition(newPosition);
+        this.worldMap.setCreature(this);
+
+
     }
 
     private Optional<Coordinates> chooseTarget() {

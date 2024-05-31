@@ -7,19 +7,16 @@ public abstract class Entity {
     protected Coordinates position;
     protected WorldMap worldMap;
 
-    public Entity(Coordinates position)
-    {
+    public Entity(Coordinates position) {
         this.position = position;
     }
 
-    public Entity(Coordinates position, WorldMap worldMap)
-    {
+    public Entity(Coordinates position, WorldMap worldMap) {
         this.position = position;
         this.worldMap = worldMap;
     }
 
-    protected void setPosition(Coordinates position)
-    {
+    protected void setPosition(Coordinates position) {
         this.position = position;
     }
 
@@ -28,4 +25,8 @@ public abstract class Entity {
     }
 
     public abstract String getIcon();
+
+    public void setWorldMap(WorldMap worldMap) {
+        this.worldMap = worldMap;
+    }
 }

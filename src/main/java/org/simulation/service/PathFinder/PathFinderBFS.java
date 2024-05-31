@@ -38,8 +38,6 @@ public class PathFinderBFS implements PathFinder {
         Node curNode = graph.getNode(startNode);
         curNode.setParent(null);
 
-        System.out.println(graph);
-
         path.add(curNode);
         while (!path.isEmpty()) {
 

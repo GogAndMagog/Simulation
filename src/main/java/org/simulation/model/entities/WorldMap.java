@@ -30,12 +30,14 @@ public class WorldMap {
     public void setLandscapeObject(LandscapeObject object) {
         if (checkOutOfField(object.getPosition())) {
             landscape.put(object.getPosition(), object);
+            object.setWorldMap(this);
         }
     }
 
     public void setCreature(Creature creature) {
         if (checkOutOfField(creature.getPosition())) {
             creatures.put(creature.getPosition(), creature);
+            creature.setWorldMap(this);
         }
     }
 
