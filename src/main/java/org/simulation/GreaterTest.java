@@ -14,7 +14,6 @@ import java.util.Set;
 
 public class GreaterTest {
     public static void main(String[] args) {
-
         WorldMap worldMap = new WorldMap(8, 8);
 //        worldMap.setLandscapeObject(new Herb(new Coordinates(0, 0)));
 //        worldMap.setLandscapeObject(new Herb(new Coordinates(0, 1)));
