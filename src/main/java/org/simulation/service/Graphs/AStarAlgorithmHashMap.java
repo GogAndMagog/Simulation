@@ -1,14 +1,16 @@
 package org.simulation.service.Graphs;
 
-import Graphs.DistanceCalculationHeuristic.DistanceCalculator;
+import org.simulation.service.Graphs.DistanceCalculationHeuristic.*;
+import org.simulation.service.Graphs.Entities.AStarGraph;
+import org.simulation.service.Graphs.Entities.AStarNode;
 
 import java.util.*;
 
-public class AStarAlgorithm implements PathFinder<String, AStarNode, AStarGraph> {
+public class AStarAlgorithmHashMap implements PathFinder<String, AStarNode, AStarGraph> {
 
     DistanceCalculator distanceCalculator;
 
-    public AStarAlgorithm(DistanceCalculator distanceCalculator) {
+    public AStarAlgorithmHashMap(DistanceCalculator distanceCalculator) {
         this.distanceCalculator = distanceCalculator;
     }
 
@@ -26,11 +28,16 @@ public class AStarAlgorithm implements PathFinder<String, AStarNode, AStarGraph>
         double cost;
         double newCost;
 
-        System.out.println(graph);
+//        System.out.println(graph);
 
         String currentNode = findLowestCostNode(costs, passedNodes);
-        System.out.println(currentNode);
+//        System.out.println(currentNode);
+
+        long comparisons = 0;
         while (currentNode != null) {
+            comparisons++;
+//            System.out.println("Current node: " + graph.getNodeById(currentNode).getCoordinates());
+            if (currentNode.equals(targetNode)) {break;}
             cost = costs.get(currentNode);
             neighbours = graph.getNodeById(currentNode).getNeighbours();
             if (neighbours == null) {
@@ -48,6 +55,8 @@ public class AStarAlgorithm implements PathFinder<String, AStarNode, AStarGraph>
             passedNodes.add(currentNode);
             currentNode = findLowestCostNode(costs, passedNodes);
         }
+
+        System.out.println("Comparisons: " + comparisons);
 
         return restorePath(parents, baseNode, targetNode);
     }
@@ -125,16 +134,12 @@ public class AStarAlgorithm implements PathFinder<String, AStarNode, AStarGraph>
 
         parents.put(baseNode, null);
 
-        System.out.println(parents);
-
         while (currentNode != null) {
             path.add(currentNode);
             currentNode = parents.get(currentNode);
         }
 
         Collections.reverse(path);
-
-        System.out.println(path);
 
         return path;
     }

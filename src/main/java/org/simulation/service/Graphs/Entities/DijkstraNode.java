@@ -1,11 +1,12 @@
-package org.simulation.service.Graphs;
+package org.simulation.service.Graphs.Entities;
 
 import java.util.HashMap;
 
-public class DijkstraNode extends Node<String> {
+public class DijkstraNode extends Node<String> implements Comparable<DijkstraNode> {
 
     private Coordinates coordinates;
     private int cost;
+    DijkstraNode parent;
 
     HashMap<String, DijkstraNode> neighbours = new HashMap<>();
 
@@ -39,12 +40,26 @@ public class DijkstraNode extends Node<String> {
         neighbours.put(neighbour.getId(), neighbour);
     }
 
+    public DijkstraNode getParent() {
+        return parent;
+    }
+
+    public void setParent(DijkstraNode parent) {
+        this.parent = parent;
+    }
+
     @Override
     public String toString() {
         return "Node{" +
                 "coordinates=" + coordinates +
                 ", id=" + id +
                 ", cost=" + cost +
+                ", parent=" + parent +
                 '}';
+    }
+
+    @Override
+    public int compareTo(DijkstraNode o) {
+        return Integer.compare(this.getCost(), o.getCost());
     }
 }

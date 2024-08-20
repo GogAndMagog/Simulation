@@ -1,8 +1,8 @@
 package org.simulation.model.entities.dynamic.herbivore;
 
-import org.simulation.model.coordinates.Coordinates;
 import org.simulation.model.entities.WorldMap;
 import org.simulation.model.entities.dynamic.Creature;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 public abstract class Herbivore extends Creature {
     public Herbivore(Coordinates position, int speed, int hp) {

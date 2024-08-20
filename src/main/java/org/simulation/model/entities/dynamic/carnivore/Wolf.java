@@ -1,17 +1,12 @@
 package org.simulation.model.entities.dynamic.carnivore;
 
-import com.sun.jdi.ClassType;
-import org.simulation.model.coordinates.Coordinates;
-import org.simulation.model.entities.Entity;
 import org.simulation.model.entities.Icons;
 import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.dynamic.Creature;
 import org.simulation.model.entities.dynamic.herbivore.Herbivore;
-import org.simulation.model.entities.statical.Herb;
+import org.simulation.service.Graphs.Entities.Coordinates;
 import org.simulation.service.PathFinder.PathFinderBFS;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 

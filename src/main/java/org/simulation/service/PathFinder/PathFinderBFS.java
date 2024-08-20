@@ -1,11 +1,11 @@
 package org.simulation.service.PathFinder;
 
-import org.simulation.model.coordinates.Coordinates;
 import org.simulation.model.entities.WorldMap;
 import org.simulation.model.entities.dynamic.carnivore.Wolf;
 import org.simulation.model.entities.searchstructs.Graph;
 import org.simulation.model.entities.searchstructs.Node;
 import org.simulation.model.entities.statical.Rock;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 import java.util.*;
 

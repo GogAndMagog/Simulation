@@ -1,7 +1,7 @@
 package org.simulation.service.PathFinder;
 
-import org.simulation.model.coordinates.Coordinates;
 import org.simulation.model.entities.WorldMap;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 import java.util.List;
 

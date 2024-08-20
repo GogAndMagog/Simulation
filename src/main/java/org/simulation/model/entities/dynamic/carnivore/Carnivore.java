@@ -1,8 +1,8 @@
 package org.simulation.model.entities.dynamic.carnivore;
 
-import org.simulation.model.coordinates.Coordinates;
 import org.simulation.model.entities.WorldMap;
 import org.simulation.model.entities.dynamic.Creature;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 public abstract class Carnivore extends Creature {
     private int attack;

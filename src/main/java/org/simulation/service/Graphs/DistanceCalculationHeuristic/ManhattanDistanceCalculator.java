@@ -1,6 +1,6 @@
 package org.simulation.service.Graphs.DistanceCalculationHeuristic;
 
-import Graphs.Coordinates;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 public class ManhattanDistanceCalculator implements DistanceCalculator {
     @Override

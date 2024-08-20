@@ -1,4 +1,4 @@
-package org.simulation.service.Graphs;
+package org.simulation.service.Graphs.Entities;
 
 public abstract class Node<Id> {
     protected Id id;
@@ -18,5 +18,10 @@ public abstract class Node<Id> {
 
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
+    }
+
+    @Override
+    public String toString() {
+        return "Id: " + id + " Coordinates: " + coordinates;
     }
 }

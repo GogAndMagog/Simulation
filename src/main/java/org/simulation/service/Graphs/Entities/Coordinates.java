@@ -1,4 +1,4 @@
-package org.simulation.model.coordinates;
+package org.simulation.service.Graphs.Entities;
 
 import java.util.Objects;
 
@@ -42,7 +42,7 @@ public class Coordinates {
 
     @Override
     public String toString() {
-        return "Coordinates{" +
+        return "Coordinates: {" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

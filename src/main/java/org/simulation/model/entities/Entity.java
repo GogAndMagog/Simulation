@@ -1,6 +1,7 @@
 package org.simulation.model.entities;
 
-import org.simulation.model.coordinates.*;
+
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 public abstract class Entity {
 

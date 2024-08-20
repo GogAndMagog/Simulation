@@ -1,8 +1,8 @@
 package org.simulation.model.entities.statical;
 
-import org.simulation.model.coordinates.*;
 import org.simulation.model.entities.Entity;
 import org.simulation.model.entities.WorldMap;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 public abstract class LandscapeObject extends Entity {
     public LandscapeObject(Coordinates position) {

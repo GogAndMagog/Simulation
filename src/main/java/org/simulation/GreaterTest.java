@@ -1,11 +1,13 @@
 package org.simulation;
 
-import org.simulation.model.coordinates.*;
 import org.simulation.model.entities.WorldMap;
 import org.simulation.model.entities.dynamic.Creature;
 import org.simulation.model.entities.dynamic.carnivore.Wolf;
 import org.simulation.model.entities.dynamic.herbivore.Sheep;
 import org.simulation.model.entities.statical.*;
+import org.simulation.service.Graphs.Entities.Coordinates;
+import org.simulation.service.Graphs.GraphFabric.DijkstraGraphFabric;
+import org.simulation.service.Graphs.GraphFabric.GraphAbstractFabric;
 import org.simulation.view.ConsoleRenderer;
 import org.simulation.view.Renderer;
 
@@ -22,6 +24,7 @@ public class GreaterTest {
         worldMap.setLandscapeObject(new Tree(new Coordinates(1, 2)));
         worldMap.setLandscapeObject(new Tree(new Coordinates(2, 2)));
         worldMap.setLandscapeObject(new Tree(new Coordinates(3, 2)));
+        worldMap.setLandscapeObject(new Sand(new Coordinates(4, 2)));
 //        worldMap.setLandscapeObject(new Tree(new Coordinates(4, 2)));
         worldMap.setLandscapeObject(new Tree(new Coordinates(5, 2)));
         worldMap.setLandscapeObject(new Tree(new Coordinates(6, 2)));
@@ -36,7 +39,12 @@ public class GreaterTest {
         renderer.render();
         int iterations = 4;
 
-        makeMove(worldMap, renderer, iterations);
+//        makeMove(worldMap, renderer, iterations);
+
+        GraphAbstractFabric graphFabric = new DijkstraGraphFabric();
+        var graph = graphFabric.createGraph(worldMap);
+        System.out.println(graph);
+
     }
 
     static void makeMove(WorldMap worldMap, Renderer renderer, int iterations) {

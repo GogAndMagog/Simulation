@@ -1,6 +1,6 @@
 package org.simulation.model.entities.searchstructs;
 
-import org.simulation.model.coordinates.Coordinates;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 import java.util.ArrayList;
 import java.util.List;

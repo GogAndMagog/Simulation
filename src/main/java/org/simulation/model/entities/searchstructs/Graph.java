@@ -1,10 +1,9 @@
 package org.simulation.model.entities.searchstructs;
 
-import org.simulation.model.coordinates.Coordinates;
 import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.dynamic.Creature;
 import org.simulation.model.entities.dynamic.carnivore.Wolf;
 import org.simulation.model.entities.statical.Rock;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 import java.util.*;
 

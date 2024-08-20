@@ -1,9 +1,8 @@
 package org.simulation.model.entities;
 
-import org.simulation.model.coordinates.Coordinates;
 import org.simulation.model.entities.dynamic.Creature;
 import org.simulation.model.entities.statical.LandscapeObject;
-import org.simulation.model.entities.statical.Terrain;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 import java.util.*;
 
@@ -13,6 +12,8 @@ public class WorldMap {
 
     private HashMap<Coordinates, LandscapeObject> landscape = new HashMap<>();
     private HashMap<Coordinates, Creature> creatures = new HashMap<>();
+//    List<Creature> creatures = new ArrayList<>();
+//    List<LandscapeObject> landscape = new ArrayList<>();
 
     public WorldMap(int x, int y) {
         this.y = y;
@@ -30,6 +31,7 @@ public class WorldMap {
     public void setLandscapeObject(LandscapeObject object) {
         if (checkOutOfField(object.getPosition())) {
             landscape.put(object.getPosition(), object);
+//            landscape.add(object);
             object.setWorldMap(this);
         }
     }
@@ -37,15 +39,16 @@ public class WorldMap {
     public void setCreature(Creature creature) {
         if (checkOutOfField(creature.getPosition())) {
             creatures.put(creature.getPosition(), creature);
+//            creatures.add(creature);
             creature.setWorldMap(this);
         }
     }
 
-    public Map<Coordinates, LandscapeObject> getLandscape() {
+    public HashMap<Coordinates, LandscapeObject> getLandscape() {
         return landscape;
     }
 
-    public Map<Coordinates, Creature> getCreatures() {
+    public HashMap<Coordinates, Creature> getCreatures() {
         return creatures;
     }
 
@@ -68,10 +71,10 @@ public class WorldMap {
     private Map<Coordinates, Double> getDistancesToTarget(Coordinates currentPosition, Class target) {
         Map<Coordinates, Double> creaturesDistances = new HashMap<>();
 
-        creatures.values().stream()
-                .filter(target::isInstance)
-                .filter(creature -> creature.getPosition() != currentPosition)
-                .forEach(creature -> creaturesDistances.put(creature.getPosition(), calculateLength(currentPosition, creature.getPosition())));
+//        creatures.values().stream()
+//                .filter(target::isInstance)
+//                .filter(creature -> creature.getPosition() != currentPosition)
+//                .forEach(creature -> creaturesDistances.put(creature.getPosition(), calculateLength(currentPosition, creature.getPosition())));
 
         return creaturesDistances;
     }
@@ -138,25 +141,25 @@ public class WorldMap {
 
     private boolean checkObstacles(Coordinates coordinates, Coordinates target) {
 
-        if (coordinates != null && coordinates.equals(target))
-            return true;
-
-        if (landscape.get(coordinates) != null && !(landscape.get(coordinates) instanceof Terrain))
-            return false;
-
-        if (creatures.get(coordinates) != null)
-            return false;
+//        if (coordinates != null && coordinates.equals(target))
+//            return true;
+//
+//        if (landscape.get(coordinates) != null && !(landscape.get(coordinates) instanceof Terrain))
+//            return false;
+//
+//        if (creatures.get(coordinates) != null)
+//            return false;
 
         return true;
     }
 
-    public int getPassability(Coordinates coordinates) {
-        LandscapeObject landscapeObject = landscape.get(coordinates);
-
-        if (landscapeObject != null && landscapeObject instanceof Terrain)
-            return ((Terrain) landscapeObject).getPassability() + 1;
-        else
-            return 1;
-    }
+//    public int getPassability(Coordinates coordinates) {
+//        LandscapeObject landscapeObject = landscape.get(coordinates);
+//
+//        if (landscapeObject != null && landscapeObject instanceof Terrain)
+//            return ((Terrain) landscapeObject).getPassability() + 1;
+//        else
+//            return 1;
+//    }
 
 }

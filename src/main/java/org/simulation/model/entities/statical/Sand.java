@@ -4,13 +4,11 @@ import org.simulation.model.entities.Icons;
 import org.simulation.model.entities.WorldMap;
 import org.simulation.service.Graphs.Entities.Coordinates;
 
-
-public class Herb extends LandscapeObject implements Terrain {
-
-    public Herb(Coordinates position) {
+public class Sand extends LandscapeObject implements Terrain  {
+    public Sand(Coordinates position) {
         super(position);
     }
-    public Herb(Coordinates position, WorldMap worldMap) {
+    public Sand(Coordinates position, WorldMap worldMap) {
         super(position, worldMap);
     }
     @Override
@@ -20,6 +18,6 @@ public class Herb extends LandscapeObject implements Terrain {
 
     @Override
     public int getPassability() {
-        return 1;
+        return 5;
     }
 }

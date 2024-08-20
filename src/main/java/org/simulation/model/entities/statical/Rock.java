@@ -1,8 +1,8 @@
 package org.simulation.model.entities.statical;
 
-import org.simulation.model.coordinates.*;
 import org.simulation.model.entities.Icons;
 import org.simulation.model.entities.WorldMap;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 public class Rock extends LandscapeObject {
 

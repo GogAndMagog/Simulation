@@ -1,8 +1,11 @@
 package org.simulation.service.Graphs;
 
+import org.simulation.service.Graphs.Entities.DijkstraGraph;
+import org.simulation.service.Graphs.Entities.DijkstraNode;
+
 import java.util.*;
 
-public class DijkstraAlgorithm implements PathFinder<String, DijkstraNode, DijkstraGraph> {
+public class DijkstraAlgorithmHashMap implements PathFinder<String, DijkstraNode, DijkstraGraph> {
 
   @Override
   public List<String> findPath(DijkstraGraph graph, String baseNode, String targetNode) {
@@ -15,12 +18,15 @@ public class DijkstraAlgorithm implements PathFinder<String, DijkstraNode, Dijks
     int cost;
     int newCost;
 
-    System.out.println(graph);
+//    System.out.println(graph);
     passedNodes.add(baseNode);
 
     String currentNode = findLowestCostNode(costs, passedNodes);
-    System.out.println(currentNode);
+//    System.out.println(currentNode);
+
+    int comparisons = 0;
     while (currentNode != null) {
+      comparisons++;
       cost = costs.get(currentNode);
       neighbours = graph.getNodeById(currentNode).getNeighbours();
       if (neighbours == null) {
@@ -42,6 +48,9 @@ public class DijkstraAlgorithm implements PathFinder<String, DijkstraNode, Dijks
 
     //To avoid infinite loop we must null parent for base node
     parents.put(baseNode, null);
+
+
+    System.out.println("Comparisons: " + comparisons);
 
     return restorePath(parents, baseNode, targetNode);
   }

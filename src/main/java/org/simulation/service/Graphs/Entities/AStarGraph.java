@@ -1,4 +1,4 @@
-package org.simulation.service.Graphs;
+package org.simulation.service.Graphs.Entities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +43,14 @@ public class AStarGraph implements Graph<String, AStarNode> {
         StringBuilder str = new StringBuilder();
 
         for (var node : nodes) {
-            str.append(node.getId()).append(": ").append(node.getNeighbours()).append("\n");
+//            str.append(node.getId()).append(": ").append(node.getNeighbours()).append("\n");
+            System.out.println(node);
+            System.out.println("Neighbours: ");
+            System.out.print("{ ");
+            for (var neighbour : node.getNeighbours().entrySet()) {
+                System.out.print(neighbour.getKey() + ",");
+            }
+            System.out.println("} ");
         }
         return str.toString();
     }

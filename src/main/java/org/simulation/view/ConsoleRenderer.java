@@ -1,9 +1,7 @@
 package org.simulation.view;
 
-import org.simulation.model.coordinates.*;
 import org.simulation.model.entities.WorldMap;
-
-import javax.annotation.processing.SupportedSourceVersion;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 public class ConsoleRenderer implements Renderer {
 

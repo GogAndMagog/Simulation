@@ -1,4 +1,4 @@
-package org.simulation.service.Graphs;
+package org.simulation.service.Graphs.Entities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +43,11 @@ public class DijkstraGraph implements Graph<String, DijkstraNode> {
         StringBuilder str = new StringBuilder();
 
         for (var node : nodes) {
-            str.append(node.getId()).append(": ").append(node.getNeighbours()).append("\n");
+            str.append("ID = ").append(node.getId())
+                    .append(" Cost = ").append(node.getCost())
+                    .append(" Coordinates = ").append(node.getCoordinates())
+                    .append(": ").append(node.getNeighbours())
+                    .append("\n");
         }
         return str.toString();
     }
