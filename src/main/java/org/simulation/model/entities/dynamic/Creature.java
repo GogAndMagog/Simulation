@@ -3,12 +3,14 @@ package org.simulation.model.entities.dynamic;
 import org.simulation.model.entities.Entity;
 import org.simulation.model.entities.WorldMap;
 import org.simulation.service.Graphs.Entities.Coordinates;
-import org.simulation.service.PathFinder.PathFinder;
+import org.simulation.service.Graphs.GraphFabric.GraphAbstractFabric;
+import org.simulation.service.Graphs.PathFinder;
 
 public abstract class Creature extends Entity {
 
     private final int speed;
     private int hp;
+
     protected PathFinder pathFinder;
 
     public Creature(Coordinates position, int speed, int hp) {

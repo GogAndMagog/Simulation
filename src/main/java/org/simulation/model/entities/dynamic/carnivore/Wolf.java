@@ -3,7 +3,11 @@ package org.simulation.model.entities.dynamic.carnivore;
 import org.simulation.model.entities.Icons;
 import org.simulation.model.entities.WorldMap;
 import org.simulation.model.entities.dynamic.herbivore.Herbivore;
+import org.simulation.service.Graphs.AStarAlgorithmQueue;
+import org.simulation.service.Graphs.DistanceCalculationHeuristic.ChebyshevDistanceCalculator;
 import org.simulation.service.Graphs.Entities.Coordinates;
+import org.simulation.service.Graphs.GraphFabric.AStarGraphFactory;
+import org.simulation.service.Graphs.GraphFabric.GraphAbstractFabric;
 import org.simulation.service.PathFinder.PathFinderBFS;
 
 import java.util.ArrayList;
@@ -25,41 +29,41 @@ public class Wolf extends Carnivore {
 
     public Wolf(Coordinates position, int speed, int hp, int attack) {
         super(position, speed, hp, attack);
-        pathFinder = new PathFinderBFS();
+        pathFinder = AStarAlgorithmQueue.getInstance(new ChebyshevDistanceCalculator());
     }
 
     public Wolf(Coordinates position, WorldMap worldMap, int speed, int hp, int attack) {
         super(position, worldMap, speed, hp, attack);
-        pathFinder = new PathFinderBFS();
+        pathFinder = AStarAlgorithmQueue.getInstance(new ChebyshevDistanceCalculator());
     }
 
     @Override
     public void makeMove() {
-        int actionPoints = getSpeed();
-        Coordinates newPosition = this.position;
-        List<Coordinates> path = new ArrayList<>();
-
-        var closest = worldMap.getClosest(this.position, Herbivore.class);
-        if (closest.isPresent()) {
-            path = pathFinder.findPath(this.position, closest.get(), worldMap);
-            if (path.size() > 0) {
-                path.removeLast();
-                path.removeFirst();
-            }
-        }
-        else {
-            chooseRandomDirection();
-        }
-
-        var pathIterator = path.iterator();
-        while (actionPoints > 0 && pathIterator.hasNext()) {
-            newPosition = pathIterator.next();
-            actionPoints--;
-        }
-
-        this.worldMap.removeCreature(this.position);
-        this.setPosition(newPosition);
-        this.worldMap.setCreature(this);
+//        int actionPoints = getSpeed();
+//        Coordinates newPosition = this.position;
+//        List<Coordinates> path = new ArrayList<>();
+//
+//        var closest = worldMap.getClosest(this.position, Herbivore.class);
+//        if (closest.isPresent()) {
+//            path = pathFinder.findPath(this.position, closest.get(), worldMap);
+//            if (path.size() > 0) {
+//                path.removeLast();
+//                path.removeFirst();
+//            }
+//        }
+//        else {
+//            chooseRandomDirection();
+//        }
+//
+//        var pathIterator = path.iterator();
+//        while (actionPoints > 0 && pathIterator.hasNext()) {
+//            newPosition = pathIterator.next();
+//            actionPoints--;
+//        }
+//
+//        this.worldMap.removeCreature(this.position);
+//        this.setPosition(newPosition);
+//        this.worldMap.setCreature(this);
 
 
     }

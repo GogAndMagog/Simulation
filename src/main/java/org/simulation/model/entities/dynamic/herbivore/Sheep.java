@@ -2,16 +2,20 @@ package org.simulation.model.entities.dynamic.herbivore;
 
 import org.simulation.model.entities.Icons;
 import org.simulation.model.entities.WorldMap;
+import org.simulation.service.Graphs.AStarAlgorithmQueue;
+import org.simulation.service.Graphs.DistanceCalculationHeuristic.ChebyshevDistanceCalculator;
 import org.simulation.service.Graphs.Entities.Coordinates;
 
 public class Sheep extends Herbivore {
 
     public Sheep(Coordinates position, int speed, int hp) {
         super(position, speed, hp);
+        pathFinder = AStarAlgorithmQueue.getInstance(new ChebyshevDistanceCalculator());
     }
 
     public Sheep(Coordinates position, WorldMap worldMap, int speed, int hp) {
         super(position, worldMap, speed, hp);
+        pathFinder = AStarAlgorithmQueue.getInstance(new ChebyshevDistanceCalculator());
     }
 
     @Override
