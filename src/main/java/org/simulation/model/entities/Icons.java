@@ -13,5 +13,4 @@ public final class Icons {
     //creatures
     public static final String ICON_WOLF = "\uD83D\uDC3A";
     public static final String ICON_SHEEP = "\uD83D\uDC0F";
-
 }
