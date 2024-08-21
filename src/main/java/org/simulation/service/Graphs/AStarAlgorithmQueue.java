@@ -1,10 +1,7 @@
 package org.simulation.service.Graphs;
 
 import org.simulation.service.Graphs.DistanceCalculationHeuristic.DistanceCalculator;
-import org.simulation.service.Graphs.Entities.AStarGraph;
-import org.simulation.service.Graphs.Entities.AStarNode;
-import org.simulation.service.Graphs.Entities.DijkstraGraph;
-import org.simulation.service.Graphs.Entities.DijkstraNode;
+import org.simulation.service.Graphs.Entities.*;
 
 import java.util.*;
 
@@ -26,7 +23,7 @@ public class AStarAlgorithmQueue implements PathFinder<String, AStarNode, AStarG
     }
 
     @Override
-    public List<String> findPath(AStarGraph graph, String baseNode, String targetNode) {
+    public List<Coordinates> findPath(AStarGraph graph, String baseNode, String targetNode) {
         Set<AStarNode> visited = new HashSet<>();
         Queue<AStarNode> queue = new PriorityQueue<>();
         Map<String, Integer> totalDistance = new HashMap<>();
@@ -83,12 +80,12 @@ public class AStarAlgorithmQueue implements PathFinder<String, AStarNode, AStarG
         }
     }
 
-    private List<String> restorePath(AStarGraph graph, String targetNode) {
-        List<String> path = new ArrayList<>();
+    private List<Coordinates> restorePath(AStarGraph graph, String targetNode) {
+        List<Coordinates> path = new ArrayList<>();
         AStarNode currentNode = graph.getNodeById(targetNode);
 
         while (currentNode != null) {
-            path.add(currentNode.getId());
+            path.add(currentNode.getCoordinates());
             currentNode = currentNode.getParent();
         }
 

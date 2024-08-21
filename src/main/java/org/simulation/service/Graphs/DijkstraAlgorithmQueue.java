@@ -1,5 +1,6 @@
 package org.simulation.service.Graphs;
 
+import org.simulation.service.Graphs.Entities.Coordinates;
 import org.simulation.service.Graphs.Entities.DijkstraGraph;
 import org.simulation.service.Graphs.Entities.DijkstraNode;
 
@@ -16,7 +17,7 @@ public class DijkstraAlgorithmQueue implements PathFinder<String, DijkstraNode, 
     private DijkstraAlgorithmQueue(){}
 
     @Override
-    public List<String> findPath(DijkstraGraph graph, String baseNode, String targetNode) {
+    public List<Coordinates> findPath(DijkstraGraph graph, String baseNode, String targetNode) {
 
         Set<DijkstraNode> visited = new HashSet<>();
         Queue<DijkstraNode> queue = new PriorityQueue<>();
@@ -59,12 +60,12 @@ public class DijkstraAlgorithmQueue implements PathFinder<String, DijkstraNode, 
         return totalDistance;
     }
 
-    private List<String> restorePath(DijkstraGraph graph, String targetNode) {
-        List<String> path = new ArrayList<>();
+    private List<Coordinates> restorePath(DijkstraGraph graph, String targetNode) {
+        List<Coordinates> path = new ArrayList<>();
         DijkstraNode currentNode = graph.getNodeById(targetNode);
 
         while (currentNode != null) {
-            path.add(currentNode.getId());
+            path.add(currentNode.getCoordinates());
             currentNode = currentNode.getParent();
         }
 

@@ -3,6 +3,7 @@ package org.simulation.service.Graphs;
 import org.simulation.service.Graphs.DistanceCalculationHeuristic.*;
 import org.simulation.service.Graphs.Entities.AStarGraph;
 import org.simulation.service.Graphs.Entities.AStarNode;
+import org.simulation.service.Graphs.Entities.Coordinates;
 
 import java.util.*;
 
@@ -15,7 +16,7 @@ public class AStarAlgorithmHashMap implements PathFinder<String, AStarNode, ASta
     }
 
     @Override
-    public List<String> findPath(AStarGraph graph, String baseNode, String targetNode) {
+    public List<Coordinates> findPath(AStarGraph graph, String baseNode, String targetNode) {
 
         calculateHeuristicAndPriority(graph, baseNode, targetNode);
 
@@ -58,7 +59,7 @@ public class AStarAlgorithmHashMap implements PathFinder<String, AStarNode, ASta
 
         System.out.println("Comparisons: " + comparisons);
 
-        return restorePath(parents, baseNode, targetNode);
+        return restorePath(parents, graph, baseNode, targetNode);
     }
 
     private HashMap<String, String> createParents(AStarGraph graph, String baseNode) {
@@ -128,14 +129,14 @@ public class AStarAlgorithmHashMap implements PathFinder<String, AStarNode, ASta
         return lowestCostNode;
     }
 
-    private List<String> restorePath(HashMap<String, String> parents, String baseNode, String targetNode) {
-        List<String> path = new ArrayList<>();
+    private List<Coordinates> restorePath(HashMap<String, String> parents, AStarGraph graph, String baseNode, String targetNode) {
+        List<Coordinates> path = new ArrayList<>();
         String currentNode = targetNode;
 
         parents.put(baseNode, null);
 
         while (currentNode != null) {
-            path.add(currentNode);
+            path.add(graph.getNodeById(currentNode).getCoordinates());
             currentNode = parents.get(currentNode);
         }
 

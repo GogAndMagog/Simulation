@@ -1,5 +1,6 @@
 package org.simulation.service.Graphs;
 
+import org.simulation.service.Graphs.Entities.Coordinates;
 import org.simulation.service.Graphs.Entities.DijkstraGraph;
 import org.simulation.service.Graphs.Entities.DijkstraNode;
 
@@ -8,7 +9,7 @@ import java.util.*;
 public class DijkstraAlgorithmHashMap implements PathFinder<String, DijkstraNode, DijkstraGraph> {
 
   @Override
-  public List<String> findPath(DijkstraGraph graph, String baseNode, String targetNode) {
+  public List<Coordinates> findPath(DijkstraGraph graph, String baseNode, String targetNode) {
     HashMap<String, Integer> costs = createCosts(graph, baseNode);
     HashMap<String, String> parents = createParents(graph, baseNode);
     HashMap<String, DijkstraNode> neighbours;
@@ -52,7 +53,7 @@ public class DijkstraAlgorithmHashMap implements PathFinder<String, DijkstraNode
 
     System.out.println("Comparisons: " + comparisons);
 
-    return restorePath(parents, baseNode, targetNode);
+    return restorePath(parents, graph, baseNode, targetNode);
   }
 
   private HashMap<String, String> createParents(DijkstraGraph graph, String baseNode) {
@@ -110,12 +111,12 @@ public class DijkstraAlgorithmHashMap implements PathFinder<String, DijkstraNode
     return lowestCostNode;
   }
 
-  private List<String> restorePath(HashMap<String, String> parents, String baseNode, String targetNode) {
-    List<String> path = new ArrayList<>();
+  private List<Coordinates> restorePath(HashMap<String, String> parents, DijkstraGraph graph, String baseNode, String targetNode) {
+    List<Coordinates> path = new ArrayList<>();
     String currentNode = targetNode;
 
     while (currentNode != null) {
-      path.add(currentNode);
+      path.add(graph.getNodeById(currentNode).getCoordinates());
       currentNode = parents.get(currentNode);
     }
 
