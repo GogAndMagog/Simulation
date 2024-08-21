@@ -8,28 +8,28 @@ import org.simulation.service.Graphs.PathFinder;
 
 public abstract class Creature extends Entity {
 
-    private final int speed;
+    private final int actionPoints;
     private int hp;
 
     protected PathFinder pathFinder;
     protected GraphAbstractFabric graphAbstractFabric;
 
-    public Creature(Coordinates position, int speed, int hp) {
+    public Creature(Coordinates position, int actionPoints, int hp) {
         super(position);
-        this.speed = speed;
+        this.actionPoints = actionPoints;
         this.hp = hp;
     }
 
-    public Creature(Coordinates position, WorldMap worldMap, int speed, int hp) {
+    public Creature(Coordinates position, WorldMap worldMap, int actionPoints, int hp) {
         super(position, worldMap);
-        this.speed = speed;
+        this.actionPoints = actionPoints;
         this.hp = hp;
     }
 
     public abstract void makeMove();
 
-    public int getSpeed() {
-        return speed;
+    public int getActionPoints() {
+        return actionPoints;
     }
 
     public void takeDamage(int damage) {
