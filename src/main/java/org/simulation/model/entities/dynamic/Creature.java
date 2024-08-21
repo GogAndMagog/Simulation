@@ -12,6 +12,7 @@ public abstract class Creature extends Entity {
     private int hp;
 
     protected PathFinder pathFinder;
+    protected GraphAbstractFabric graphAbstractFabric;
 
     public Creature(Coordinates position, int speed, int hp) {
         super(position);

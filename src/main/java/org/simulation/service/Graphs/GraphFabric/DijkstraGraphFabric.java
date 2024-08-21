@@ -7,6 +7,19 @@ import org.simulation.service.Graphs.Entities.DijkstraGraph;
 import org.simulation.service.Graphs.Entities.DijkstraNode;
 
 public class DijkstraGraphFabric implements GraphAbstractFabric<DijkstraGraph> {
+
+    private static DijkstraGraphFabric instance = new DijkstraGraphFabric();
+
+    private DijkstraGraphFabric() {
+    }
+
+    public static DijkstraGraphFabric getInstance() {
+        if (instance == null) {
+            instance = new DijkstraGraphFabric();
+        }
+        return instance;
+    }
+
     @Override
     public DijkstraGraph createGraph(WorldMap worldMap) {
         DijkstraGraph dijkstraGraph = new DijkstraGraph();

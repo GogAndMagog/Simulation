@@ -4,7 +4,19 @@ import org.simulation.model.entities.WorldMap;
 import org.simulation.model.entities.statical.Terrain;
 import org.simulation.service.Graphs.Entities.*;
 
-public class AStarGraphFactory implements GraphAbstractFabric<AStarGraph>{
+public class AStarGraphFactory implements GraphAbstractFabric<AStarGraph> {
+
+    private static AStarGraphFactory instance = new AStarGraphFactory();
+
+    public static AStarGraphFactory getInstance() {
+        if (instance == null) {
+            instance = new AStarGraphFactory();
+        }
+        return instance;
+    }
+
+    private AStarGraphFactory() {}
+
     @Override
     public AStarGraph createGraph(WorldMap worldMap) {
         AStarGraph aStarGraph = new AStarGraph();

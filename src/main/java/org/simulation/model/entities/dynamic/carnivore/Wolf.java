@@ -29,11 +29,13 @@ public class Wolf extends Carnivore {
 
     public Wolf(Coordinates position, int speed, int hp, int attack) {
         super(position, speed, hp, attack);
+        graphAbstractFabric = AStarGraphFactory.getInstance();
         pathFinder = AStarAlgorithmQueue.getInstance(new ChebyshevDistanceCalculator());
     }
 
     public Wolf(Coordinates position, WorldMap worldMap, int speed, int hp, int attack) {
         super(position, worldMap, speed, hp, attack);
+        graphAbstractFabric = AStarGraphFactory.getInstance();
         pathFinder = AStarAlgorithmQueue.getInstance(new ChebyshevDistanceCalculator());
     }
 
