@@ -10,6 +10,7 @@ public abstract class Creature extends Entity {
 
     private final int actionPoints;
     private int hp;
+    private CreatureStatus creatureStatus;
 
     protected PathFinder pathFinder;
     protected GraphAbstractFabric graphAbstractFabric;
@@ -18,6 +19,7 @@ public abstract class Creature extends Entity {
         super(position);
         this.actionPoints = actionPoints;
         this.hp = hp;
+        creatureStatus = CreatureStatus.ALIVE;
     }
 
     public Creature(Coordinates position, WorldMap worldMap, int actionPoints, int hp) {
@@ -35,12 +37,12 @@ public abstract class Creature extends Entity {
     public void takeDamage(int damage) {
         hp -= damage;
         if (hp <= 0) {
-            this.die();
+            creatureStatus = CreatureStatus.DEAD;
         }
     }
 
-    private void die() {
-        worldMap.removeCreature(this.position);
-    }
+//    private void die() {
+//        worldMap.removeCreature(this.position);
+//    }
 
 }
