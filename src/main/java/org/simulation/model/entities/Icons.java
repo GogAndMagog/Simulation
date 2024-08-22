@@ -3,8 +3,9 @@ package org.simulation.model.entities;
 public final class Icons {
     public static final String BLANK = " ";
     public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+    public static final String ANSI_GRAY_BACKGROUND = "\u001b[48;5;240m";
+    public static final String ANSI_YELLOW_BACKGROUND = "\u001b[48;5;222m";
     public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ICON_HERB = ANSI_GREEN_BACKGROUND + BLANK + BLANK + ANSI_RESET;
 
     //landscape objects
     public static final String ICON_ROCK = "\u26F0\uFE0F";

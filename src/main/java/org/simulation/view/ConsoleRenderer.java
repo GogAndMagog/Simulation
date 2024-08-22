@@ -1,6 +1,12 @@
 package org.simulation.view;
 
+import org.simulation.model.entities.Icons;
 import org.simulation.model.entities.WorldMap;
+import org.simulation.model.entities.dynamic.carnivore.Wolf;
+import org.simulation.model.entities.dynamic.herbivore.Sheep;
+import org.simulation.model.entities.statical.terrain.Herb;
+import org.simulation.model.entities.statical.terrain.Road;
+import org.simulation.model.entities.statical.terrain.Sand;
 import org.simulation.service.Graphs.Entities.Coordinates;
 
 public class ConsoleRenderer implements Renderer {
@@ -23,6 +29,23 @@ public class ConsoleRenderer implements Renderer {
         String TREE = "\uD83C\uDF33";
         StringBuilder sb = new StringBuilder();
 
+        WorldMap worldMap = new WorldMap(3, 3);
+        Renderer renderer = new ConsoleRenderer(worldMap);
+
+        worldMap.setCreature(new Wolf(new Coordinates(0, 0), worldMap,10,10, 10));
+        worldMap.setCreature(new Wolf(new Coordinates(1, 0), worldMap, 10, 10, 10));
+        worldMap.setCreature(new Wolf(new Coordinates(0, 1), worldMap, 10, 10, 10));
+        worldMap.setCreature(new Sheep(new Coordinates(1, 1), worldMap, 10, 10));
+        worldMap.setCreature(new Sheep(new Coordinates(2, 2), worldMap, 10, 10));
+        worldMap.setLandscapeObject(new Sand(new Coordinates(0,0)));
+        worldMap.setLandscapeObject(new Sand(new Coordinates(1,0)));
+        worldMap.setLandscapeObject(new Herb(new Coordinates(0,1)));
+        worldMap.setLandscapeObject(new Road(new Coordinates(1,1)));
+        worldMap.setLandscapeObject(new Road(new Coordinates(2,1)));
+
+
+        renderer.render();
+
     }
 
     WorldMap worldMap;
@@ -44,11 +67,13 @@ public class ConsoleRenderer implements Renderer {
                 currentPosition = new Coordinates(j, i);
                 if (worldMap.getLandscape().get(currentPosition) != null) {
                     sb.append(worldMap.getLandscape().get(currentPosition).getIcon());
-                } else if (worldMap.getCreatures().get(currentPosition) != null) {
+                }
+                if (worldMap.getCreatures().get(currentPosition) != null) {
                     sb.append(worldMap.getCreatures().get(currentPosition).getIcon());
                 } else {
-                    sb.append(BLANK).append(BLANK);
+                    sb.append(Icons.BLANK).append(Icons.BLANK);
                 }
+                sb.append(Icons.ANSI_RESET);
             }
             sb.append(System.lineSeparator());
         }
