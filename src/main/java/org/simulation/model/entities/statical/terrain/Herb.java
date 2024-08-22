@@ -1,7 +1,8 @@
-package org.simulation.model.entities.statical;
+package org.simulation.model.entities.statical.terrain;
 
 import org.simulation.model.entities.Icons;
 import org.simulation.model.entities.WorldMap;
+import org.simulation.model.entities.statical.LandscapeObject;
 import org.simulation.service.Graphs.Entities.Coordinates;
 
 
@@ -15,7 +16,7 @@ public class Herb extends LandscapeObject implements Terrain {
     }
     @Override
     public String getIcon() {
-        return Icons.ICON_HERB;
+        return Icons.ANSI_GREEN_BACKGROUND;
     }
 
     @Override
