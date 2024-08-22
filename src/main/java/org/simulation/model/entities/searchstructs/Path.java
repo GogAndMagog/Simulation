@@ -1,7 +1,6 @@
 package org.simulation.model.entities.searchstructs;
 
-import com.sun.source.tree.IfTree;
-import org.simulation.model.entities.statical.Terrain;
+import org.simulation.model.entities.statical.terrain.Terrain;
 
 import java.util.List;
 

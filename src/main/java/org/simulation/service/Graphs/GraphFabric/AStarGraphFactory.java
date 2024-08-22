@@ -1,7 +1,7 @@
 package org.simulation.service.Graphs.GraphFabric;
 
 import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.statical.Terrain;
+import org.simulation.model.entities.statical.terrain.Terrain;
 import org.simulation.service.Graphs.Entities.*;
 
 public class AStarGraphFactory implements GraphAbstractFabric<AStarGraph> {

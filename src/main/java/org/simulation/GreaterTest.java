@@ -5,6 +5,7 @@ import org.simulation.model.entities.dynamic.Creature;
 import org.simulation.model.entities.dynamic.carnivore.Wolf;
 import org.simulation.model.entities.dynamic.herbivore.Sheep;
 import org.simulation.model.entities.statical.*;
+import org.simulation.model.entities.statical.terrain.Sand;
 import org.simulation.service.Graphs.Entities.Coordinates;
 import org.simulation.service.Graphs.GraphFabric.DijkstraGraphFabric;
 import org.simulation.service.Graphs.GraphFabric.GraphAbstractFabric;
@@ -41,7 +42,7 @@ public class GreaterTest {
 
 //        makeMove(worldMap, renderer, iterations);
 
-        GraphAbstractFabric graphFabric = new DijkstraGraphFabric();
+        GraphAbstractFabric graphFabric =  DijkstraGraphFabric.getInstance();
         var graph = graphFabric.createGraph(worldMap);
         System.out.println(graph);
 

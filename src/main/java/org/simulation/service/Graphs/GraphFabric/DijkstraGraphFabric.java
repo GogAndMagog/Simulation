@@ -1,7 +1,7 @@
 package org.simulation.service.Graphs.GraphFabric;
 
 import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.statical.Terrain;
+import org.simulation.model.entities.statical.terrain.Terrain;
 import org.simulation.service.Graphs.Entities.Coordinates;
 import org.simulation.service.Graphs.Entities.DijkstraGraph;
 import org.simulation.service.Graphs.Entities.DijkstraNode;
