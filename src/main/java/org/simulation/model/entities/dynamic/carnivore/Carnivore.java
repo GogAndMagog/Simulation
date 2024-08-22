@@ -17,8 +17,11 @@ public abstract class Carnivore extends Creature {
         this.attack = attack;
     }
 
-    protected void attack(Creature creature)
-    {
-        creature.takeDamage(attack);
+    protected void attack(Creature creature) {
+        //if target close enough able to attack
+        if (Math.abs(this.getPosition().getX() - creature.getPosition().getX()) <= 1
+                && Math.abs(this.getPosition().getY() - creature.getPosition().getY()) <= 1) {
+            creature.takeDamage(this.attack);
+        }
     }
 }
