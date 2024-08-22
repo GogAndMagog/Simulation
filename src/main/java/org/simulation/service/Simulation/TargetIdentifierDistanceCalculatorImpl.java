@@ -3,15 +3,13 @@ package org.simulation.service.Simulation;
 import org.simulation.model.entities.Entity;
 import org.simulation.model.entities.dynamic.carnivore.Wolf;
 import org.simulation.model.entities.dynamic.herbivore.Sheep;
-import org.simulation.model.entities.statical.LandscapeObject;
 import org.simulation.model.entities.statical.Rock;
-import org.simulation.model.entities.statical.Terrain;
 import org.simulation.service.Graphs.DistanceCalculationHeuristic.ChebyshevDistanceCalculator;
 import org.simulation.service.Graphs.DistanceCalculationHeuristic.DistanceCalculator;
 import org.simulation.service.Graphs.Entities.Coordinates;
 
-import java.lang.annotation.Target;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class TargetIdentifierDistanceCalculatorImpl implements TargetIdentifier {
@@ -46,11 +44,11 @@ public class TargetIdentifierDistanceCalculatorImpl implements TargetIdentifier 
 
         Coordinates from = new Coordinates(4,2);
 
-        System.out.println(instance.getClosest(from, entities, Terrain.class));
+        System.out.println(instance.getClosest(from, entities, Wolf.class));
     }
 
     @Override
-    public Coordinates getClosest(Coordinates from, List<Entity> entities, Class<?>... targetClasses) {
+    public Coordinates getClosest(Coordinates from, Collection<? extends Entity> entities, Class<?>... targetClasses) {
         double minDistance = Double.MAX_VALUE;
         double currDistance;
         Coordinates closestCoordinates = null;
