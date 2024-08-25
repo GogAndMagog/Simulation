@@ -2,20 +2,20 @@ package org.simulation.model.entities.dynamic.carnivore;
 
 import org.simulation.model.entities.Icons;
 import org.simulation.model.entities.WorldMap;
+import org.simulation.model.entities.dynamic.Creature;
 import org.simulation.model.entities.dynamic.herbivore.Herbivore;
+import org.simulation.model.entities.statical.terrain.Terrain;
 import org.simulation.service.Graphs.AStarAlgorithmQueue;
 import org.simulation.service.Graphs.DistanceCalculationHeuristic.ChebyshevDistanceCalculator;
+import org.simulation.service.Graphs.DistanceCalculationHeuristic.DistanceCalculator;
 import org.simulation.service.Graphs.Entities.Coordinates;
 import org.simulation.service.Graphs.GraphFabric.AStarGraphFactory;
-import org.simulation.service.Graphs.GraphFabric.GraphAbstractFabric;
-import org.simulation.service.PathFinder.PathFinderBFS;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Wolf extends Carnivore {
     private int visionRange = 10;
+
 
     public static void main(String[] args) {
         Wolf wolf = new Wolf(new Coordinates(2, 2), 5, 1, 2);
@@ -27,51 +27,60 @@ public class Wolf extends Carnivore {
         wp.setCreature(new Wolf(new Coordinates(1, 0), 5, 1, 2));
     }
 
-    public Wolf(Coordinates position, int speed, int hp, int attack) {
-        super(position, speed, hp, attack);
+    public Wolf(Coordinates position, int actionPoints, int hp, int attack) {
+        super(position, actionPoints, hp, attack);
         graphAbstractFabric = AStarGraphFactory.getInstance();
-        pathFinder = AStarAlgorithmQueue.getInstance(new ChebyshevDistanceCalculator());
+        pathFinder = AStarAlgorithmQueue.getInstance(ChebyshevDistanceCalculator.getInstance());
     }
 
-    public Wolf(Coordinates position, WorldMap worldMap, int speed, int hp, int attack) {
-        super(position, worldMap, speed, hp, attack);
+    public Wolf(Coordinates position, WorldMap worldMap, int actionPoints, int hp, int attack) {
+        super(position, worldMap, actionPoints, hp, attack);
         graphAbstractFabric = AStarGraphFactory.getInstance();
-        pathFinder = AStarAlgorithmQueue.getInstance(new ChebyshevDistanceCalculator());
+        pathFinder = AStarAlgorithmQueue.getInstance(ChebyshevDistanceCalculator.getInstance());
     }
 
     @Override
     public void makeMove() {
-//        int actionPoints = getSpeed();
-//        Coordinates newPosition = this.position;
-//        List<Coordinates> path = new ArrayList<>();
-//
-//        var closest = worldMap.getClosest(this.position, Herbivore.class);
-//        if (closest.isPresent()) {
-//            path = pathFinder.findPath(this.position, closest.get(), worldMap);
-//            if (path.size() > 0) {
-//                path.removeLast();
-//                path.removeFirst();
-//            }
-//        }
-//        else {
-//            chooseRandomDirection();
-//        }
-//
-//        var pathIterator = path.iterator();
-//        while (actionPoints > 0 && pathIterator.hasNext()) {
-//            newPosition = pathIterator.next();
-//            actionPoints--;
-//        }
-//
-//        this.worldMap.removeCreature(this.position);
-//        this.setPosition(newPosition);
-//        this.worldMap.setCreature(this);
+        Creature target = this.worldMap
+                .getCreatures()
+                .get(targetIdentifier.getClosest(this.getPosition(),
+                        worldMap.getCreatures().values(),
+                        Herbivore.class));
 
+        if (target == null) {
+            return;
+        }
 
+        int actionPointsPerTurn = this.getActionPoints();
+
+        actionPointsPerTurn = movement(actionPointsPerTurn, target);
+
+        if (actionPointsPerTurn > 0) {
+            attack(target);
+        }
     }
 
-    private Optional<Coordinates> chooseTarget() {
-        return worldMap.getClosest(this.position, Herbivore.class);
+    private int movement(Integer actionPointsPerTurn, Creature target) {
+        var graph = graphAbstractFabric.createGraph(this.worldMap);
+        List<Coordinates> path = pathFinder.findPath(graph,
+                graph.getNodeByCoordinates(this.getPosition()),
+                graph.getNodeByCoordinates(target.getPosition()));
+
+        Iterator<Coordinates> pathIterator = path.iterator();
+        Coordinates currentCoordinates;
+        while (pathIterator.hasNext() || actionPointsPerTurn > 0) {
+            currentCoordinates = pathIterator.next();
+            var landscapeObject = this.worldMap.getLandscape().get(currentCoordinates);
+            if (landscapeObject instanceof Terrain) {
+                actionPointsPerTurn -= ((Terrain) landscapeObject).getPassability();
+            } else
+                actionPointsPerTurn -= Terrain.DEFAULT_PASSABILITY;
+            if (actionPointsPerTurn >= 0) {
+                this.position = currentCoordinates;
+            }
+        }
+
+        return actionPointsPerTurn;
     }
 
     private Coordinates chooseRandomDirection() {
