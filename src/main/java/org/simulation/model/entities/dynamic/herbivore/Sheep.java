@@ -9,16 +9,16 @@ import org.simulation.service.Graphs.GraphFabric.AStarGraphFactory;
 
 public class Sheep extends Herbivore {
 
-    public Sheep(Coordinates position, int speed, int hp) {
-        super(position, speed, hp);
+    public Sheep(Coordinates position, int actionPoints, int hp) {
+        super(position, actionPoints, hp);
         graphAbstractFabric = AStarGraphFactory.getInstance();
-        pathFinder = AStarAlgorithmQueue.getInstance(new ChebyshevDistanceCalculator());
+        pathFinder = AStarAlgorithmQueue.getInstance(ChebyshevDistanceCalculator.getInstance());
     }
 
-    public Sheep(Coordinates position, WorldMap worldMap, int speed, int hp) {
-        super(position, worldMap, speed, hp);
+    public Sheep(Coordinates position, WorldMap worldMap, int actionPoints, int hp) {
+        super(position, worldMap, actionPoints, hp);
         graphAbstractFabric = AStarGraphFactory.getInstance();
-        pathFinder = AStarAlgorithmQueue.getInstance(new ChebyshevDistanceCalculator());
+        pathFinder = AStarAlgorithmQueue.getInstance(ChebyshevDistanceCalculator.getInstance());
     }
 
     @Override
