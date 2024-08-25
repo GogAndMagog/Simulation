@@ -43,7 +43,16 @@ public abstract class Creature extends Entity {
         }
     }
 
-//    private void die() {
+    public CreatureStatus getCreatureStatus() {
+        return creatureStatus;
+    }
+
+    protected boolean filterDeadCreatures(Entity entity) {
+        return !(entity instanceof Creature)
+                || !((Creature) entity).getCreatureStatus().equals(CreatureStatus.DEAD);
+    }
+
+    //    private void die() {
 //        worldMap.removeCreature(this.position);
 //    }
 

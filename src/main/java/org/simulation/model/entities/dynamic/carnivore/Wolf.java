@@ -12,6 +12,7 @@ import org.simulation.service.Graphs.Entities.Coordinates;
 import org.simulation.service.Graphs.GraphFabric.AStarGraphFactory;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Wolf extends Carnivore {
     private int visionRange = 10;
@@ -44,7 +45,11 @@ public class Wolf extends Carnivore {
         Creature target = this.worldMap
                 .getCreatures()
                 .get(targetIdentifier.getClosest(this.getPosition(),
-                        worldMap.getCreatures().values(),
+                        worldMap.getCreatures()
+                                .values()
+                                .stream()
+                                .filter(this::filterDeadCreatures)
+                                .collect(Collectors.toCollection(ArrayList::new)),
                         Herbivore.class));
 
         if (target == null) {
