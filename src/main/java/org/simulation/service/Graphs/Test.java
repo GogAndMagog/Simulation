@@ -22,7 +22,7 @@ public class Test {
 
         test.testDijkstra2(graph, pathFinder, targetCoordinates);
 
-        DistanceCalculator distanceCalculator = new ChebyshevDistanceCalculator();
+        DistanceCalculator distanceCalculator = ChebyshevDistanceCalculator.getInstance();
         pathFinder = AStarAlgorithmQueue.getInstance(distanceCalculator);
 
 //        test.testAStarGraph1(pathFinder);
