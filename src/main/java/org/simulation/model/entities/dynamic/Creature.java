@@ -6,6 +6,7 @@ import org.simulation.service.Graphs.Entities.Coordinates;
 import org.simulation.service.Graphs.GraphFabric.GraphAbstractFabric;
 import org.simulation.service.Graphs.PathFinder;
 import org.simulation.service.Simulation.TargetIdentifier;
+import org.simulation.service.Simulation.TargetIdentifierDistanceCalculatorImpl;
 
 public abstract class Creature extends Entity {
 
@@ -22,6 +23,7 @@ public abstract class Creature extends Entity {
         this.actionPoints = actionPoints;
         this.hp = hp;
         creatureStatus = CreatureStatus.ALIVE;
+        this.targetIdentifier = TargetIdentifierDistanceCalculatorImpl.getInstance();
     }
 
     public Creature(Coordinates position, WorldMap worldMap, int actionPoints, int hp) {
@@ -29,6 +31,7 @@ public abstract class Creature extends Entity {
         this.actionPoints = actionPoints;
         this.hp = hp;
         creatureStatus = CreatureStatus.ALIVE;
+        this.targetIdentifier = TargetIdentifierDistanceCalculatorImpl.getInstance();
     }
 
     public abstract void makeMove();
