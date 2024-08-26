@@ -28,6 +28,7 @@ public abstract class Creature extends Entity {
         super(position, worldMap);
         this.actionPoints = actionPoints;
         this.hp = hp;
+        creatureStatus = CreatureStatus.ALIVE;
     }
 
     public abstract void makeMove();
