@@ -4,6 +4,9 @@ import org.simulation.model.entities.WorldMap;
 import org.simulation.model.entities.statical.terrain.Terrain;
 import org.simulation.service.Graphs.Entities.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AStarGraphFactory implements GraphAbstractFabric<AStarGraph> {
 
     private static AStarGraphFactory instance = new AStarGraphFactory();
@@ -29,7 +32,7 @@ public class AStarGraphFactory implements GraphAbstractFabric<AStarGraph> {
         for (int i = 0; i < worldMap.getX(); i++) {
             for (int j = 0; j < worldMap.getX(); j++) {
                 coordinates = new Coordinates(i, j);
-                aStarGraph.addNode(new AStarNode(Integer.toString(id), coordinates, 1));
+                aStarGraph.addNode(new AStarNode(Integer.toString(id), coordinates, Terrain.DEFAULT_PASSABILITY));
                 id++;
             }
         }
@@ -49,6 +52,70 @@ public class AStarGraphFactory implements GraphAbstractFabric<AStarGraph> {
             }
         }
 
+
+        for (var node : aStarGraph.getNodes()) {
+            var neighbors = getNeighbours(node.getCoordinates(), worldMap.getX(), worldMap.getY());
+            for (var neighbor : neighbors) {
+                aStarGraph.addNeighbour(node.getId(), aStarGraph.getNodeByCoordinates(neighbor));
+            }
+        }
+
         return aStarGraph;
     }
+
+
+    public List<Coordinates> getNeighbours(Coordinates coordinates, int n, int m) {
+        List<Coordinates> neighbors = new ArrayList<>();
+
+        Coordinates tmpPosition = new Coordinates(coordinates.getX(), coordinates.getY() - 1);
+        if (isAccessible(tmpPosition, n, m))
+            neighbors.add(tmpPosition);
+
+        tmpPosition = new Coordinates(coordinates.getX() + 1, coordinates.getY() - 1);
+        if (isAccessible(tmpPosition, n, m))
+            neighbors.add(tmpPosition);
+
+        tmpPosition = new Coordinates(coordinates.getX() + 1, coordinates.getY());
+        if (isAccessible(tmpPosition, n, m))
+            neighbors.add(tmpPosition);
+
+        tmpPosition = new Coordinates(coordinates.getX() + 1, coordinates.getY() + 1);
+        if (isAccessible(tmpPosition, n, m))
+            neighbors.add(tmpPosition);
+
+        tmpPosition = new Coordinates(coordinates.getX(), coordinates.getY() + 1);
+        if (isAccessible(tmpPosition, n, m))
+            neighbors.add(tmpPosition);
+
+        tmpPosition = new Coordinates(coordinates.getX() - 1, coordinates.getY() + 1);
+        if (isAccessible(tmpPosition, n, m))
+            neighbors.add(tmpPosition);
+
+        tmpPosition = new Coordinates(coordinates.getX() - 1, coordinates.getY());
+        if (isAccessible(tmpPosition, n, m))
+            neighbors.add(tmpPosition);
+
+        tmpPosition = new Coordinates(coordinates.getX() - 1, coordinates.getY() - 1);
+        if (isAccessible(tmpPosition, n, m))
+            neighbors.add(tmpPosition);
+
+        return neighbors;
+    }
+
+    private boolean isAccessible(Coordinates coordinates, int n, int m) {
+        return checkOutOfField(coordinates, n, m);
+    }
+
+    private boolean checkOutOfField(Coordinates coordinates, int n, int m) {
+        if (coordinates.getX() >= n ||
+                coordinates.getX() < 0 ||
+                coordinates.getY() >= m ||
+                coordinates.getY() < 0)
+            return false;
+        else
+            return true;
+    }
+
+
+
 }
