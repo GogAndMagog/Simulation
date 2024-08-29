@@ -56,6 +56,17 @@ public abstract class Creature extends Entity {
                 || !((Creature) entity).getCreatureStatus().equals(CreatureStatus.DEAD);
     }
 
+    protected boolean filterCreaturesOnTheGround(Entity entity) {
+        if (this.worldMap == null)
+            return false;
+
+        if (this.worldMap.getCreatures().containsKey(entity.getPosition())) {
+            return this.worldMap.getCreatures().get(entity.getPosition()).equals(this);
+        } else {
+            return true;
+        }
+    }
+
     //    private void die() {
 //        worldMap.removeCreature(this.position);
 //    }
