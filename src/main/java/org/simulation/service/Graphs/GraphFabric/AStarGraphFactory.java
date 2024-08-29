@@ -37,11 +37,6 @@ public class AStarGraphFactory implements GraphAbstractFabric<AStarGraph> {
             }
         }
 
-        for (var creature : worldMap.getCreatures().entrySet()) {
-            aStarNode = aStarGraph.getNodeByCoordinates(creature.getValue().getPosition());
-            aStarNode.setCost(Integer.MAX_VALUE);
-        }
-
         for (var landscapeObject : worldMap.getLandscape().entrySet()) {
             aStarNode = aStarGraph.getNodeByCoordinates(landscapeObject.getValue().getPosition());
 
@@ -51,6 +46,12 @@ public class AStarGraphFactory implements GraphAbstractFabric<AStarGraph> {
                 aStarNode.setCost(Integer.MAX_VALUE);
             }
         }
+
+        for (var creature : worldMap.getCreatures().entrySet()) {
+            aStarNode = aStarGraph.getNodeByCoordinates(creature.getValue().getPosition());
+            aStarNode.setCost(Integer.MAX_VALUE);
+        }
+
 
 
         for (var node : aStarGraph.getNodes()) {
