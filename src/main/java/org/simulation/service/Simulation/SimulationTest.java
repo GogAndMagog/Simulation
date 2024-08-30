@@ -8,7 +8,7 @@ public class SimulationTest {
     public static void main(String[] args) {
         BlockingQueue<SimulationCommand> commandQueue = new ArrayBlockingQueue<SimulationCommand>(10);
 
-        Simulation simulation = new Simulation(commandQueue);
+        Simulation simulation = new Simulation(commandQueue, 2, 2);
 
         try {
             commandQueue.put(SimulationCommand.START_SIMULATION);
