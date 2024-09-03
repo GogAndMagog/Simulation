@@ -32,6 +32,10 @@ public class Sheep extends Herbivore {
         pathFinder = AStarAlgorithmQueue.getInstance(ChebyshevDistanceCalculator.getInstance());
     }
 
+    public static Sheep getSheep(Coordinates coordinates) {
+        return new Sheep(coordinates, 3, 5);
+    }
+
     @Override
     public void makeMove() {
         LandscapeObject target = this.worldMap
@@ -56,8 +60,6 @@ public class Sheep extends Herbivore {
             eatHerb(target);
         }
     }
-
-
 
 
     private int movement(Integer actionPointsPerTurn, LandscapeObject target) {

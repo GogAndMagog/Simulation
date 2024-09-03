@@ -29,6 +29,11 @@ public class Wolf extends Carnivore {
         pathFinder = AStarAlgorithmQueue.getInstance(ChebyshevDistanceCalculator.getInstance());
     }
 
+    public static Wolf getWolf(Coordinates coordinates)
+    {
+        return new Wolf(coordinates, 5, 10, 3);
+    }
+
     @Override
     public void makeMove() {
         Creature target = this.worldMap
