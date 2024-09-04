@@ -1,6 +1,8 @@
 package org.simulation.service.Graphs.Entities;
 
 import java.util.Objects;
+import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public class Coordinates {
     int x;
@@ -25,6 +27,11 @@ public class Coordinates {
 
     public void setX(int x) {
         this.x = x;
+    }
+
+    public static Coordinates createCoordinates(int xRange, int yRange) {
+        Random rand = new Random();
+        return new Coordinates(rand.nextInt(0, xRange), rand.nextInt(0, yRange));
     }
 
     @Override
