@@ -7,5 +7,5 @@ import org.simulation.service.Graphs.Entities.Node;
 import java.util.List;
 
 public interface PathFinder<Id, T extends Node<Id>, P extends Graph<Id, T>> {
-  public List<Coordinates> findPath(P graph, Id baseNode, Id targetNode);
+  List<Coordinates> findPath(P graph, Id baseNode, Id targetNode);
 }
