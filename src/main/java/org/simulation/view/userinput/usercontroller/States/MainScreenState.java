@@ -1,12 +1,10 @@
-package org.simulation.view.UserInput.UserController.States;
+package org.simulation.view.userinput.usercontroller.States;
 
-import org.simulation.service.Graphs.Entities.Coordinates;
-import org.simulation.view.UserInput.Dialog;
-import org.simulation.view.UserInput.Info;
-import org.simulation.view.UserInput.Screens.MainConsoleScreen;
-import org.simulation.view.UserInput.Screens.Screen;
-import org.simulation.view.UserInput.UserController.UserControllerContext;
-import org.simulation.view.UserInput.UserInputValidation;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.view.userinput.Dialog;
+import org.simulation.view.userinput.screen.MainConsoleScreen;
+import org.simulation.view.userinput.screen.Screen;
+import org.simulation.view.userinput.usercontroller.UserControllerContext;
 
 public class MainScreenState implements UserControllerState {
 
@@ -65,6 +63,8 @@ public class MainScreenState implements UserControllerState {
     public void runSimulation() {
         try {
             userControllerContext.getSimulation().startSimulation();
+            userControllerContext.changeState(new SimulationInProcessState(userControllerContext));
+            userControllerContext.showScreen();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             userControllerContext.showScreen();

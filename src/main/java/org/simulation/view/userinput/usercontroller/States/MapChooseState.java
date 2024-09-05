@@ -1,14 +1,11 @@
-package org.simulation.view.UserInput.UserController.States;
+package org.simulation.view.userinput.usercontroller.States;
 
-import org.simulation.model.entities.dynamic.carnivore.Wolf;
-import org.simulation.service.Graphs.Entities.Coordinates;
-import org.simulation.service.Simulation.Actions.InitWorldAction;
-import org.simulation.service.Simulation.Actions.InitWorldMap;
-import org.simulation.view.UserInput.Dialog;
-import org.simulation.view.UserInput.Screens.MainConsoleScreen;
-import org.simulation.view.UserInput.Screens.MapChooseScreen;
-import org.simulation.view.UserInput.Screens.Screen;
-import org.simulation.view.UserInput.UserController.UserControllerContext;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.service.simulation.action.InitWorldMapAction;
+import org.simulation.view.userinput.Dialog;
+import org.simulation.view.userinput.screen.MapChooseScreen;
+import org.simulation.view.userinput.screen.Screen;
+import org.simulation.view.userinput.usercontroller.UserControllerContext;
 
 public class MapChooseState implements UserControllerState {
 
@@ -67,17 +64,17 @@ public class MapChooseState implements UserControllerState {
 
     @Override
     public void chooseSandyWorld() {
-        userControllerContext.getSimulation().setInitWorldAction(new InitWorldMap());
+        userControllerContext.getSimulation().setInitWorldAction(new InitWorldMapAction());
     }
 
     @Override
     public void chooseGreenWorld() {
-        userControllerContext.getSimulation().setInitWorldAction(new InitWorldMap());
+        userControllerContext.getSimulation().setInitWorldAction(new InitWorldMapAction());
     }
 
     @Override
     public void chooseIndustrialWorld() {
-        userControllerContext.getSimulation().setInitWorldAction(new InitWorldMap());
+        userControllerContext.getSimulation().setInitWorldAction(new InitWorldMapAction());
     }
 
     @Override

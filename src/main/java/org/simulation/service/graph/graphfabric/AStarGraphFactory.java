@@ -1,8 +1,8 @@
-package org.simulation.service.graphs.graphfabric;
+package org.simulation.service.graph.graphfabric;
 
 import org.simulation.model.entity.WorldMap;
 import org.simulation.model.entity.statical.terrain.Terrain;
-import org.simulation.service.graphs.entity.*;
+import org.simulation.service.graph.entity.*;
 
 import java.util.ArrayList;
 import java.util.List;

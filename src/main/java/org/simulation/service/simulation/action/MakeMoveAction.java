@@ -1,7 +1,7 @@
-package org.simulation.service.Simulation.Actions;
+package org.simulation.service.simulation.action;
 
-import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.dynamic.Creature;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.dynamic.Creature;
 
 import java.util.*;
 

@@ -1,8 +1,8 @@
-package org.simulation.model.entities;
+package org.simulation.model.entity;
 
-import org.simulation.model.entities.dynamic.Creature;
-import org.simulation.model.entities.statical.LandscapeObject;
-import org.simulation.service.graphs.Entities.Coordinates;
+import org.simulation.model.entity.dynamic.Creature;
+import org.simulation.model.entity.statical.LandscapeObject;
+import org.simulation.service.graph.entity.Coordinates;
 
 import java.util.*;
 

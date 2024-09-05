@@ -1,4 +1,4 @@
-package org.simulation.view.UserInput;
+package org.simulation.view.userinput;
 
 public class ConsoleUserInputValidation implements UserInputValidation {
 

@@ -1,4 +1,4 @@
-package org.simulation.service.graphs.entity;
+package org.simulation.service.graph.entity;
 
 public abstract class Node<Id> {
     protected Id id;

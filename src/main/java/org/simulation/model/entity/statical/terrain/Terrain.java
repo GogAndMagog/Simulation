@@ -1,4 +1,4 @@
-package org.simulation.model.entities.statical.terrain;
+package org.simulation.model.entity.statical.terrain;
 
 public interface Terrain {
     int DEFAULT_PASSABILITY = 3;

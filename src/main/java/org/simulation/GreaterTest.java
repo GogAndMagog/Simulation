@@ -1,14 +1,14 @@
 package org.simulation;
 
-import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.dynamic.Creature;
-import org.simulation.model.entities.dynamic.carnivore.Wolf;
-import org.simulation.model.entities.dynamic.herbivore.Sheep;
-import org.simulation.model.entities.statical.*;
-import org.simulation.model.entities.statical.terrain.Sand;
-import org.simulation.service.Graphs.Entities.Coordinates;
-import org.simulation.service.Graphs.GraphFabric.DijkstraGraphFabric;
-import org.simulation.service.Graphs.GraphFabric.GraphAbstractFabric;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.dynamic.Creature;
+import org.simulation.model.entity.dynamic.carnivore.Wolf;
+import org.simulation.model.entity.dynamic.herbivore.Sheep;
+import org.simulation.model.entity.statical.*;
+import org.simulation.model.entity.statical.terrain.Sand;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.service.graph.graphfabric.DijkstraGraphFabric;
+import org.simulation.service.graph.graphfabric.GraphAbstractFabric;
 import org.simulation.view.ConsoleRenderer;
 import org.simulation.view.Renderer;
 

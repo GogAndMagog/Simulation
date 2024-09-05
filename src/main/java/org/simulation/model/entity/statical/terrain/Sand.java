@@ -1,9 +1,9 @@
-package org.simulation.model.entities.statical.terrain;
+package org.simulation.model.entity.statical.terrain;
 
-import org.simulation.model.entities.Icons;
-import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.statical.LandscapeObject;
-import org.simulation.service.graphs.Entities.Coordinates;
+import org.simulation.model.entity.Icons;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.statical.LandscapeObject;
+import org.simulation.service.graph.entity.Coordinates;
 
 public class Sand extends LandscapeObject implements Terrain {
 

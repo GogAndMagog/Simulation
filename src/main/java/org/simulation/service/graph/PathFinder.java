@@ -1,8 +1,8 @@
-package org.simulation.service.graphs;
+package org.simulation.service.graph;
 
-import org.simulation.service.graphs.entity.Coordinates;
-import org.simulation.service.graphs.entity.Graph;
-import org.simulation.service.graphs.entity.Node;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.service.graph.entity.Graph;
+import org.simulation.service.graph.entity.Node;
 
 import java.util.List;
 

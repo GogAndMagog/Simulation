@@ -1,16 +1,16 @@
-package org.simulation.model.entities.dynamic.carnivore;
+package org.simulation.model.entity.dynamic.carnivore;
 
-import org.simulation.model.entities.Icons;
-import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.dynamic.Creature;
-import org.simulation.model.entities.dynamic.herbivore.Herbivore;
-import org.simulation.model.entities.statical.terrain.Terrain;
-import org.simulation.service.graphs.AStarAlgorithmQueue;
-import org.simulation.service.graphs.DistanceCalculationHeuristic.ChebyshevDistanceCalculator;
-import org.simulation.service.graphs.Entities.Coordinates;
-import org.simulation.service.graphs.Entities.Graph;
-import org.simulation.service.graphs.Entities.Node;
-import org.simulation.service.graphs.GraphFabric.AStarGraphFactory;
+import org.simulation.model.entity.Icons;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.dynamic.Creature;
+import org.simulation.model.entity.dynamic.herbivore.Herbivore;
+import org.simulation.model.entity.statical.terrain.Terrain;
+import org.simulation.service.graph.AStarAlgorithmQueue;
+import org.simulation.service.graph.distancecalculationheuristic.ChebyshevDistanceCalculator;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.service.graph.entity.Graph;
+import org.simulation.service.graph.entity.Node;
+import org.simulation.service.graph.graphfabric.AStarGraphFactory;
 
 import java.util.*;
 import java.util.stream.Collectors;

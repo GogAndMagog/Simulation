@@ -1,7 +1,7 @@
-package org.simulation.view.UserInput.Screens;
+package org.simulation.view.userinput.screen;
 
-import org.simulation.view.UserInput.*;
-import org.simulation.view.UserInput.UserController.UserControllerContext;
+import org.simulation.view.userinput.*;
+import org.simulation.view.userinput.usercontroller.UserControllerContext;
 
 public class MainConsoleScreen implements Screen {
 

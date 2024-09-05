@@ -1,7 +1,7 @@
-package org.simulation.view.UserInput.Screens;
+package org.simulation.view.userinput.screen;
 
-import org.simulation.service.graphs.Entities.Coordinates;
-import org.simulation.view.UserInput.*;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.view.userinput.*;
 
 public class CoordinatesConsoleScreen implements CoordinatesScreen {
 

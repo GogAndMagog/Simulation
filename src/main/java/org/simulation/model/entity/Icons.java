@@ -1,4 +1,4 @@
-package org.simulation.model.entities;
+package org.simulation.model.entity;
 
 public final class Icons {
     public static final String BLANK = " ";

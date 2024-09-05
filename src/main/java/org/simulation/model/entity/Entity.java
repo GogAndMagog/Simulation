@@ -1,7 +1,7 @@
-package org.simulation.model.entities;
+package org.simulation.model.entity;
 
 
-import org.simulation.service.graphs.Entities.Coordinates;
+import org.simulation.service.graph.entity.Coordinates;
 
 public abstract class Entity {
 

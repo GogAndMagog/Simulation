@@ -1,4 +1,4 @@
-package org.simulation.service.graphs.exception;
+package org.simulation.service.graph.exception;
 
 public class AddingWrongTypeIdException extends Exception{
     public AddingWrongTypeIdException(){}

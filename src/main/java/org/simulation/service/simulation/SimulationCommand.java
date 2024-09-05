@@ -1,4 +1,4 @@
-package org.simulation.service.Simulation;
+package org.simulation.service.simulation;
 
 public enum SimulationCommand {
     START_SIMULATION,

@@ -1,6 +1,6 @@
-package org.simulation.view.UserInput.Screens;
+package org.simulation.view.userinput.screen;
 
-import org.simulation.view.UserInput.*;
+import org.simulation.view.userinput.*;
 
 public class YesNoConsoleScreen implements BooleanScreen {
 

@@ -1,11 +1,10 @@
-package org.simulation.service.Simulation;
+package org.simulation.service.simulation;
 
-import org.simulation.model.entities.Entity;
-import org.simulation.service.Graphs.Entities.Coordinates;
+import org.simulation.model.entity.Entity;
+import org.simulation.service.graph.entity.Coordinates;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface TargetIdentifier {
-    public Coordinates getClosest(Coordinates from, Collection<? extends Entity> entities, Class<?>... targetClasses);
+    Coordinates getClosest(Coordinates from, Collection<? extends Entity> entities, Class<?>... targetClasses);
 }

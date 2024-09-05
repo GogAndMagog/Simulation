@@ -1,4 +1,4 @@
-package org.simulation.model.entities.statical;
+package org.simulation.model.entity.statical;
 
 public enum LandscapeObjectStatus {
     EXISTS,

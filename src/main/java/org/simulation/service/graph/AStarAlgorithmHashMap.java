@@ -1,9 +1,9 @@
-package org.simulation.service.graphs;
+package org.simulation.service.graph;
 
-import org.simulation.service.graphs.distancecalculationheuristic.*;
-import org.simulation.service.graphs.entity.AStarGraph;
-import org.simulation.service.graphs.entity.AStarNode;
-import org.simulation.service.graphs.entity.Coordinates;
+import org.simulation.service.graph.distancecalculationheuristic.*;
+import org.simulation.service.graph.entity.AStarGraph;
+import org.simulation.service.graph.entity.AStarNode;
+import org.simulation.service.graph.entity.Coordinates;
 
 import java.util.*;
 

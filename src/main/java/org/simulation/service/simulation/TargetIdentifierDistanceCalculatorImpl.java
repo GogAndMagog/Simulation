@@ -1,12 +1,12 @@
-package org.simulation.service.Simulation;
+package org.simulation.service.simulation;
 
-import org.simulation.model.entities.Entity;
-import org.simulation.model.entities.dynamic.carnivore.Wolf;
-import org.simulation.model.entities.dynamic.herbivore.Sheep;
-import org.simulation.model.entities.statical.Rock;
-import org.simulation.service.Graphs.DistanceCalculationHeuristic.ChebyshevDistanceCalculator;
-import org.simulation.service.Graphs.DistanceCalculationHeuristic.DistanceCalculator;
-import org.simulation.service.Graphs.Entities.Coordinates;
+import org.simulation.model.entity.Entity;
+import org.simulation.model.entity.dynamic.carnivore.Wolf;
+import org.simulation.model.entity.dynamic.herbivore.Sheep;
+import org.simulation.model.entity.statical.Rock;
+import org.simulation.service.graph.distancecalculationheuristic.ChebyshevDistanceCalculator;
+import org.simulation.service.graph.distancecalculationheuristic.DistanceCalculator;
+import org.simulation.service.graph.entity.Coordinates;
 
 import java.util.ArrayList;
 import java.util.Collection;

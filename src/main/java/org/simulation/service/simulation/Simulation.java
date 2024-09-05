@@ -1,16 +1,16 @@
-package org.simulation.service.Simulation;
+package org.simulation.service.simulation;
 
-import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.dynamic.herbivore.Sheep;
-import org.simulation.model.entities.statical.Rock;
-import org.simulation.service.Graphs.Entities.Coordinates;
-import org.simulation.service.Simulation.Actions.*;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.dynamic.Creature;
+import org.simulation.model.entity.dynamic.herbivore.Sheep;
+import org.simulation.model.entity.statical.LandscapeObject;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.service.simulation.action.*;
 import org.simulation.view.ConsoleRenderer;
 import org.simulation.view.Renderer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -22,7 +22,8 @@ public class Simulation implements AbstractSimulation, Runnable {
     WorldMap worldMap;
 
     long turnCounter = 0;
-    boolean running = true;
+    boolean running = false;
+    boolean initActionsPassed = false;
 
     private String state = "Initial state";
     BlockingQueue<SimulationCommand> commandQueue = new LinkedBlockingQueue<SimulationCommand>();
@@ -33,10 +34,10 @@ public class Simulation implements AbstractSimulation, Runnable {
         BlockingQueue<SimulationCommand> commandQueue = new LinkedBlockingQueue<>();
 
         Simulation testSimulation = new Simulation(commandQueue, 5, 5);
-        testSimulation.setInitWorldAction(new InitWorldMap());
-        testSimulation.setTurnWorldAction(new MakeMove());
-        testSimulation.setTurnWorldAction(new RemoveDeadCreatures());
-        testSimulation.setTurnWorldAction(new RemoveNotExistedLandscapeObjs());
+        testSimulation.setInitWorldAction(new InitWorldMapAction());
+        testSimulation.setTurnWorldAction(new MakeMoveAction());
+        testSimulation.setTurnWorldAction(new RemoveDeadCreaturesAction());
+        testSimulation.setTurnWorldAction(new RemoveNotExistedLandscapeObjsAction());
 
         testSimulation.startSimulation();
     }
@@ -46,37 +47,74 @@ public class Simulation implements AbstractSimulation, Runnable {
         this.initActions = new ArrayList<>();
         this.turnActions = new ArrayList<>();
         this.worldMap = new WorldMap(n, m);
-        this.running = true;
         this.renderer = new ConsoleRenderer(this.worldMap);
+
+        this.setTurnWorldAction(new MakeMoveAction());
+        this.setTurnWorldAction(new RemoveDeadCreaturesAction());
+        this.setTurnWorldAction(new RemoveNotExistedLandscapeObjsAction());
     }
 
     @Override
     public void startSimulation() {
-        processInitActions();
-        simulationProcess();
+        if (!initActionsPassed) {
+            initActionsPassed = true;
+            processInitActions();
+            renderer.render();
+        }
+
+        running = true;
+
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                renderer.render();
+//                while (commandQueue.isEmpty()) {
+                while (running) {
+                    nextMove();
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+//                commandQueue.poll();
+            }
+        };
+        new Thread(task).start();
     }
 
     @Override
     public void pauseSimulation() {
+        running = false;
     }
 
     @Override
     public void nextMove() {
+        if (!initActionsPassed) {
+            initActionsPassed = true;
+            processInitActions();
+            renderer.render();
+        }
 
+        checkMap();
+
+        if (turnCounter == 10) {
+            worldMap.setCreature(new Sheep(new Coordinates(0, 0), worldMap, 10, 10));
+        }
+        turnCounter++;
+        processTurnActions();
+        renderer.render();
     }
 
-    private void simulationProcess() {
-
+    public void simulationProcess() {
         renderer.render();
-        while(running && turnCounter < 25)
-        {
-            if (turnCounter == 10) {
-                worldMap.setCreature(new Sheep(new Coordinates(0,0), worldMap, 10,10));
-//                worldMap.setLandscapeObject(new Rock(new Coordinates(4,2), worldMap));ы
+        while (running && turnCounter < 25) {
+            nextMove();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
-            turnCounter++;
-            processTurnActions();
-            renderer.render();
         }
 //        while (commandQueue.isEmpty()) {
 //            try {
@@ -110,7 +148,15 @@ public class Simulation implements AbstractSimulation, Runnable {
 
     @Override
     public void setInitWorldAction(WorldAction action) {
-        initActions.add(action);
+        if (action instanceof InitWorldMapAction) {
+            if (!initActions.isEmpty()) {
+                initActions.removeFirst();
+            }
+            initActions.addFirst(action);
+        }
+        else{
+            initActions.addLast(action);
+        }
     }
 
     @Override
@@ -158,5 +204,33 @@ public class Simulation implements AbstractSimulation, Runnable {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    @Override
+    public void setMap(WorldMap worldMap) {
+        this.worldMap = worldMap;
+        initActionsPassed = false;
+    }
+
+    @Override
+    public void addCreature(Creature creature) {
+        this.worldMap.setCreature(creature);
+    }
+
+    @Override
+    public void addLandscapeObject(LandscapeObject landscapeObject) {
+        this.worldMap.setLandscapeObject(landscapeObject);
+    }
+
+    private void checkMap() {
+        if (this.worldMap == null
+                || (this.worldMap.getX() == 0 && this.worldMap.getY() == 0)) {
+            throw new RuntimeException("Карта не выбрана!");
+        }
+    }
+
+    @Override
+    public void renderMap() {
+        renderer.render();
     }
 }

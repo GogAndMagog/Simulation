@@ -1,4 +1,4 @@
-package org.simulation.service.graphs.entity;
+package org.simulation.service.graph.entity;
 
 import java.util.HashMap;
 

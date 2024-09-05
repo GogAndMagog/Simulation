@@ -1,10 +1,10 @@
-package org.simulation.service.graphs.graphfabric;
+package org.simulation.service.graph.graphfabric;
 
 import org.simulation.model.entity.WorldMap;
 import org.simulation.model.entity.statical.terrain.Terrain;
-import org.simulation.service.graphs.entity.Coordinates;
-import org.simulation.service.graphs.entity.DijkstraGraph;
-import org.simulation.service.graphs.entity.DijkstraNode;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.service.graph.entity.DijkstraGraph;
+import org.simulation.service.graph.entity.DijkstraNode;
 
 public class DijkstraGraphFabric implements GraphAbstractFabric<DijkstraGraph> {
 

@@ -1,12 +1,12 @@
-package org.simulation.model.entities.dynamic;
+package org.simulation.model.entity.dynamic;
 
-import org.simulation.model.entities.Entity;
-import org.simulation.model.entities.WorldMap;
-import org.simulation.service.graphs.Entities.Coordinates;
-import org.simulation.service.graphs.GraphFabric.GraphAbstractFabric;
-import org.simulation.service.graphs.PathFinder;
-import org.simulation.service.Simulation.TargetIdentifier;
-import org.simulation.service.Simulation.TargetIdentifierDistanceCalculatorImpl;
+import org.simulation.model.entity.Entity;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.service.graph.graphfabric.GraphAbstractFabric;
+import org.simulation.service.graph.PathFinder;
+import org.simulation.service.simulation.TargetIdentifier;
+import org.simulation.service.simulation.TargetIdentifierDistanceCalculatorImpl;
 
 public abstract class Creature extends Entity {
 

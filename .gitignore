@@ -37,3 +37,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/src/main/resources/META-INF/MANIFEST.MF
+/out/artifacts/Simulation_jar/Simulation.jar

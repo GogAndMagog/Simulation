@@ -1,13 +1,13 @@
 package org.simulation.view;
 
-import org.simulation.model.entities.Icons;
-import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.dynamic.carnivore.Wolf;
-import org.simulation.model.entities.dynamic.herbivore.Sheep;
-import org.simulation.model.entities.statical.terrain.Herb;
-import org.simulation.model.entities.statical.terrain.Road;
-import org.simulation.model.entities.statical.terrain.Sand;
-import org.simulation.service.Graphs.Entities.Coordinates;
+import org.simulation.model.entity.Icons;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.dynamic.carnivore.Wolf;
+import org.simulation.model.entity.dynamic.herbivore.Sheep;
+import org.simulation.model.entity.statical.terrain.Herb;
+import org.simulation.model.entity.statical.terrain.Road;
+import org.simulation.model.entity.statical.terrain.Sand;
+import org.simulation.service.graph.entity.Coordinates;
 
 public class ConsoleRenderer implements Renderer {
 

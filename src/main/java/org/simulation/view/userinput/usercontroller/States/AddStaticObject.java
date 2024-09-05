@@ -1,12 +1,12 @@
-package org.simulation.view.UserInput.UserController.States;
+package org.simulation.view.userinput.usercontroller.States;
 
-import org.simulation.model.entities.statical.Rock;
-import org.simulation.model.entities.statical.Tree;
-import org.simulation.service.Graphs.Entities.Coordinates;
-import org.simulation.view.UserInput.Dialog;
-import org.simulation.view.UserInput.Screens.AddStaticObjectScreen;
-import org.simulation.view.UserInput.Screens.Screen;
-import org.simulation.view.UserInput.UserController.UserControllerContext;
+import org.simulation.model.entity.statical.Rock;
+import org.simulation.model.entity.statical.Tree;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.view.userinput.Dialog;
+import org.simulation.view.userinput.screen.AddStaticObjectScreen;
+import org.simulation.view.userinput.screen.Screen;
+import org.simulation.view.userinput.usercontroller.UserControllerContext;
 
 public class AddStaticObject implements UserControllerState{
 

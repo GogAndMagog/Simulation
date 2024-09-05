@@ -1,9 +1,11 @@
-package org.simulation.view.UserInput.UserController;
+package org.simulation.view.userinput.usercontroller;
 
-import org.simulation.service.Graphs.Entities.Coordinates;
-import org.simulation.service.Simulation.AbstractSimulation;
-import org.simulation.service.Simulation.Simulation;
-import org.simulation.view.UserInput.UserController.States.UserControllerState;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.service.simulation.AbstractSimulation;
+import org.simulation.service.simulation.SimulationCommand;
+import org.simulation.view.userinput.usercontroller.States.UserControllerState;
+
+import java.util.concurrent.BlockingQueue;
 
 public interface UserControllerContext {
     void changeState(UserControllerState state);
@@ -29,4 +31,5 @@ public interface UserControllerContext {
     void addTree(Coordinates coordinates);
     void pauseSimulation();
     void back();
+    BlockingQueue<SimulationCommand> getCommandQueue();
 }

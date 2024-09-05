@@ -1,4 +1,4 @@
-package org.simulation.service.Simulation;
+package org.simulation.service.simulation;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

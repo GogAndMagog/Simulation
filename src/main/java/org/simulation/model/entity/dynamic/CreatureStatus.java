@@ -1,4 +1,4 @@
-package org.simulation.model.entities.dynamic;
+package org.simulation.model.entity.dynamic;
 
 public enum CreatureStatus {
     ALIVE,

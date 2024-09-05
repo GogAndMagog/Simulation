@@ -1,4 +1,4 @@
-package org.simulation.view.UserInput.Screens;
+package org.simulation.view.userinput.screen;
 
 public interface Screen {
     void display();

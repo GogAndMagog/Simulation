@@ -1,6 +1,6 @@
-package org.simulation.service.graphs.distancecalculationheuristic;
+package org.simulation.service.graph.distancecalculationheuristic;
 
-import org.simulation.service.graphs.entity.Coordinates;
+import org.simulation.service.graph.entity.Coordinates;
 
 public class ChebyshevDistanceCalculator implements DistanceCalculator {
 

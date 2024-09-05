@@ -1,13 +1,13 @@
-package org.simulation.view.UserInput.UserController.States;
+package org.simulation.view.userinput.usercontroller.States;
 
-import org.simulation.model.entities.statical.terrain.Herb;
-import org.simulation.model.entities.statical.terrain.Road;
-import org.simulation.model.entities.statical.terrain.Sand;
-import org.simulation.service.Graphs.Entities.Coordinates;
-import org.simulation.view.UserInput.Dialog;
-import org.simulation.view.UserInput.Screens.AddTerrainScreen;
-import org.simulation.view.UserInput.Screens.Screen;
-import org.simulation.view.UserInput.UserController.UserControllerContext;
+import org.simulation.model.entity.statical.terrain.Herb;
+import org.simulation.model.entity.statical.terrain.Road;
+import org.simulation.model.entity.statical.terrain.Sand;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.view.userinput.Dialog;
+import org.simulation.view.userinput.screen.AddTerrainScreen;
+import org.simulation.view.userinput.screen.Screen;
+import org.simulation.view.userinput.usercontroller.UserControllerContext;
 
 public class AddTerrainSate implements UserControllerState{
 

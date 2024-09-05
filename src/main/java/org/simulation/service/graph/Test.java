@@ -1,9 +1,9 @@
-package org.simulation.service.graphs;
+package org.simulation.service.graph;
 
 
-import org.simulation.service.graphs.distancecalculationheuristic.ChebyshevDistanceCalculator;
-import org.simulation.service.graphs.distancecalculationheuristic.DistanceCalculator;
-import org.simulation.service.graphs.entity.*;
+import org.simulation.service.graph.distancecalculationheuristic.ChebyshevDistanceCalculator;
+import org.simulation.service.graph.distancecalculationheuristic.DistanceCalculator;
+import org.simulation.service.graph.entity.*;
 
 import java.util.*;
 

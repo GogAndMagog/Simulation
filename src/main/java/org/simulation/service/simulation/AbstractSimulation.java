@@ -1,11 +1,18 @@
-package org.simulation.service.Simulation;
+package org.simulation.service.simulation;
 
-import org.simulation.service.Simulation.Actions.WorldAction;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.dynamic.Creature;
+import org.simulation.model.entity.statical.LandscapeObject;
+import org.simulation.service.simulation.action.WorldAction;
 
 public interface AbstractSimulation {
-    public void startSimulation();
-    public void pauseSimulation();
-    public void nextMove();
-    public void setInitWorldAction(WorldAction action);
-    public void setTurnWorldAction(WorldAction action);
+    void startSimulation();
+    void pauseSimulation();
+    void nextMove();
+    void setInitWorldAction(WorldAction action);
+    void setTurnWorldAction(WorldAction action);
+    void setMap(WorldMap worldMap);
+    void addCreature(Creature creature);
+    void addLandscapeObject(LandscapeObject landscapeObject);
+    void renderMap();
 }

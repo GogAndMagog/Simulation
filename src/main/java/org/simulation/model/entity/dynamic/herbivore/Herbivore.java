@@ -1,10 +1,10 @@
-package org.simulation.model.entities.dynamic.herbivore;
+package org.simulation.model.entity.dynamic.herbivore;
 
-import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.dynamic.Creature;
-import org.simulation.model.entities.statical.LandscapeObject;
-import org.simulation.model.entities.statical.LandscapeObjectStatus;
-import org.simulation.service.graphs.Entities.Coordinates;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.dynamic.Creature;
+import org.simulation.model.entity.statical.LandscapeObject;
+import org.simulation.model.entity.statical.LandscapeObjectStatus;
+import org.simulation.service.graph.entity.Coordinates;
 
 public abstract class Herbivore extends Creature {
     public Herbivore(Coordinates position, int speed, int hp) {

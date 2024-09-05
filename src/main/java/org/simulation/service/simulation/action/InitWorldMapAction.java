@@ -1,12 +1,12 @@
-package org.simulation.service.Simulation.Actions;
+package org.simulation.service.simulation.action;
 
-import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.dynamic.carnivore.Wolf;
-import org.simulation.model.entities.dynamic.herbivore.Sheep;
-import org.simulation.model.entities.statical.terrain.Herb;
-import org.simulation.model.entities.statical.terrain.Road;
-import org.simulation.model.entities.statical.terrain.Sand;
-import org.simulation.service.graphs.Entities.Coordinates;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.dynamic.carnivore.Wolf;
+import org.simulation.model.entity.dynamic.herbivore.Sheep;
+import org.simulation.model.entity.statical.terrain.Herb;
+import org.simulation.model.entity.statical.terrain.Road;
+import org.simulation.model.entity.statical.terrain.Sand;
+import org.simulation.service.graph.entity.Coordinates;
 
 public class InitWorldMapAction implements WorldAction, InitWorldAction{
     @Override

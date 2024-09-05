@@ -1,25 +1,23 @@
-package org.simulation.view.UserInput.UserController;
+package org.simulation.view.userinput.usercontroller;
 
-import org.simulation.service.Graphs.Entities.Coordinates;
-import org.simulation.service.Simulation.AbstractSimulation;
-import org.simulation.service.Simulation.Simulation;
-import org.simulation.service.Simulation.SimulationCommand;
-import org.simulation.view.UserInput.Dialog;
-import org.simulation.view.UserInput.Info;
-import org.simulation.view.UserInput.UserController.States.MainScreenState;
-import org.simulation.view.UserInput.UserController.States.UserControllerState;
-import org.simulation.view.UserInput.UserInputValidation;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.service.simulation.AbstractSimulation;
+import org.simulation.service.simulation.Simulation;
+import org.simulation.service.simulation.SimulationCommand;
+import org.simulation.view.userinput.usercontroller.States.MainScreenState;
+import org.simulation.view.userinput.usercontroller.States.UserControllerState;
 
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class UserControllerConsoleController implements UserControllerContext {
-    UserControllerState state;
+    private UserControllerState state;
 
-    BlockingQueue<SimulationCommand> commandQueue;
+    private BlockingQueue<SimulationCommand> commandQueue = new LinkedBlockingQueue<SimulationCommand>();
 
-    AbstractSimulation simulation = new Simulation(commandQueue, 0, 0);
+    private AbstractSimulation simulation = new Simulation(commandQueue, 0, 0);
 
-    public UserControllerConsoleController( ) {
+    public UserControllerConsoleController() {
         this.state = new MainScreenState(this);
     }
 
@@ -136,5 +134,9 @@ public class UserControllerConsoleController implements UserControllerContext {
     @Override
     public void back() {
         state.back();
+    }
+
+    public BlockingQueue<SimulationCommand> getCommandQueue() {
+        return commandQueue;
     }
 }

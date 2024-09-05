@@ -1,8 +1,8 @@
-package org.simulation.service.Simulation.Actions;
+package org.simulation.service.simulation.action;
 
-import org.simulation.model.entities.WorldMap;
-import org.simulation.model.entities.statical.LandscapeObject;
-import org.simulation.model.entities.statical.LandscapeObjectStatus;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.statical.LandscapeObject;
+import org.simulation.model.entity.statical.LandscapeObjectStatus;
 
 import java.util.ArrayList;
 import java.util.List;

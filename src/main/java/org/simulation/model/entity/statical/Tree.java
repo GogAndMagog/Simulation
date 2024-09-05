@@ -1,8 +1,8 @@
-package org.simulation.model.entities.statical;
+package org.simulation.model.entity.statical;
 
-import org.simulation.model.entities.Icons;
-import org.simulation.model.entities.WorldMap;
-import org.simulation.service.graphs.Entities.Coordinates;
+import org.simulation.model.entity.Icons;
+import org.simulation.model.entity.WorldMap;
+import org.simulation.service.graph.entity.Coordinates;
 
 public class Tree extends LandscapeObject {
 

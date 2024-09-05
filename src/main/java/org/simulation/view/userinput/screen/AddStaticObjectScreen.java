@@ -1,8 +1,8 @@
-package org.simulation.view.UserInput.Screens;
+package org.simulation.view.userinput.screen;
 
-import org.simulation.service.graphs.Entities.Coordinates;
-import org.simulation.view.UserInput.*;
-import org.simulation.view.UserInput.UserController.UserControllerContext;
+import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.view.userinput.*;
+import org.simulation.view.userinput.usercontroller.UserControllerContext;
 
 public class AddStaticObjectScreen implements Screen{
     UserControllerContext userControllerContext;
