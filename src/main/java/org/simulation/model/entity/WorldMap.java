@@ -4,7 +4,9 @@ import org.simulation.model.entity.dynamic.Creature;
 import org.simulation.model.entity.statical.LandscapeObject;
 import org.simulation.service.graph.entity.Coordinates;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class WorldMap {
     private int x;
@@ -30,8 +32,7 @@ public class WorldMap {
         if (checkOutOfField(object.getPosition())) {
             landscape.put(object.getPosition(), object);
             object.setWorldMap(this);
-        }
-        else
+        } else
             throw new IllegalArgumentException("""
                     Размер поля: %d %d
                     """.formatted(this.getX(), this.getY()));
@@ -41,8 +42,7 @@ public class WorldMap {
         if (checkOutOfField(creature.getPosition())) {
             creatures.put(creature.getPosition(), creature);
             creature.setWorldMap(this);
-        }
-        else
+        } else
             throw new IllegalArgumentException("""
                     Размер поля: %d %d
                     """.formatted(this.getX(), this.getY()));
@@ -68,41 +68,41 @@ public class WorldMap {
         List<Coordinates> neighbors = new ArrayList<>();
 
         Coordinates tmpPosition = new Coordinates(coordinates.getX(), coordinates.getY() - 1);
-        if (isAccessible(tmpPosition, target))
+        if (isAccessible(tmpPosition))
             neighbors.add(tmpPosition);
 
         tmpPosition = new Coordinates(coordinates.getX() + 1, coordinates.getY() - 1);
-        if (isAccessible(tmpPosition, target))
+        if (isAccessible(tmpPosition))
             neighbors.add(tmpPosition);
 
         tmpPosition = new Coordinates(coordinates.getX() + 1, coordinates.getY());
-        if (isAccessible(tmpPosition, target))
+        if (isAccessible(tmpPosition))
             neighbors.add(tmpPosition);
 
         tmpPosition = new Coordinates(coordinates.getX() + 1, coordinates.getY() + 1);
-        if (isAccessible(tmpPosition, target))
+        if (isAccessible(tmpPosition))
             neighbors.add(tmpPosition);
 
         tmpPosition = new Coordinates(coordinates.getX(), coordinates.getY() + 1);
-        if (isAccessible(tmpPosition, target))
+        if (isAccessible(tmpPosition))
             neighbors.add(tmpPosition);
 
         tmpPosition = new Coordinates(coordinates.getX() - 1, coordinates.getY() + 1);
-        if (isAccessible(tmpPosition, target))
+        if (isAccessible(tmpPosition))
             neighbors.add(tmpPosition);
 
         tmpPosition = new Coordinates(coordinates.getX() - 1, coordinates.getY());
-        if (isAccessible(tmpPosition, target))
+        if (isAccessible(tmpPosition))
             neighbors.add(tmpPosition);
 
         tmpPosition = new Coordinates(coordinates.getX() - 1, coordinates.getY() - 1);
-        if (isAccessible(tmpPosition, target))
+        if (isAccessible(tmpPosition))
             neighbors.add(tmpPosition);
 
         return neighbors;
     }
 
-    private boolean isAccessible(Coordinates coordinates, Coordinates target) {
+    private boolean isAccessible(Coordinates coordinates) {
         return checkOutOfField(coordinates);
     }
 
@@ -116,8 +116,7 @@ public class WorldMap {
             return true;
     }
 
-    public void setMap(WorldMap worldMap)
-    {
+    public void setMap(WorldMap worldMap) {
         this.x = worldMap.getX();
         this.y = worldMap.getY();
         this.landscape = worldMap.getLandscape();

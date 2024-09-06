@@ -66,9 +66,4 @@ public abstract class Creature extends Entity {
             return true;
         }
     }
-
-    //    private void die() {
-//        worldMap.removeCreature(this.position);
-//    }
-
 }

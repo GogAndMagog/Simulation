@@ -7,12 +7,6 @@ import org.simulation.service.graph.entity.Coordinates;
 
 public class Sand extends LandscapeObject implements Terrain {
 
-    public static void main(String[] args) {
-        var sand = new Sand(new Coordinates(0, 0));
-
-        System.out.println(sand.getIcon());
-    }
-
     public Sand(Coordinates position) {
         super(position);
     }

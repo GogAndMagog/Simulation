@@ -1,6 +1,5 @@
 package org.simulation.model.entity;
 
-
 import org.simulation.service.graph.entity.Coordinates;
 
 public abstract class Entity {
