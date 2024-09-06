@@ -64,6 +64,13 @@ public class Simulation implements AbstractSimulation, Runnable {
 
         running = true;
 
+        Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread th, Throwable ex) {
+                System.out.println("Uncaught exception: " + ex);
+            }
+        };
+
         Runnable task = new Runnable() {
             @Override
             public void run() {
@@ -80,7 +87,10 @@ public class Simulation implements AbstractSimulation, Runnable {
 //                commandQueue.poll();
             }
         };
-        new Thread(task).start();
+
+        Thread t = new Thread(task);
+        t.setUncaughtExceptionHandler(h);
+        t.start();
     }
 
     @Override
@@ -148,6 +158,8 @@ public class Simulation implements AbstractSimulation, Runnable {
 
     @Override
     public void setInitWorldAction(WorldAction action) {
+        initActionsPassed = false;
+
         if (action instanceof InitWorldMapAction) {
             if (!initActions.isEmpty()) {
                 initActions.removeFirst();
