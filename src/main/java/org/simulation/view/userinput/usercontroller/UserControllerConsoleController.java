@@ -15,7 +15,7 @@ public class UserControllerConsoleController implements UserControllerContext {
 
     private BlockingQueue<SimulationCommand> commandQueue = new LinkedBlockingQueue<SimulationCommand>();
 
-    private AbstractSimulation simulation = new Simulation(commandQueue, 0, 0);
+    private AbstractSimulation simulation = new Simulation(commandQueue);
 
     public UserControllerConsoleController() {
         this.state = new MainScreenState(this);

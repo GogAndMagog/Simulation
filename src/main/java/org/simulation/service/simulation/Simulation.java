@@ -5,16 +5,19 @@ import org.simulation.model.entity.dynamic.Creature;
 import org.simulation.model.entity.dynamic.herbivore.Sheep;
 import org.simulation.model.entity.statical.LandscapeObject;
 import org.simulation.service.graph.entity.Coordinates;
-import org.simulation.service.simulation.action.*;
+import org.simulation.service.simulation.action.MakeMoveAction;
+import org.simulation.service.simulation.action.RemoveDeadCreaturesAction;
+import org.simulation.service.simulation.action.RemoveNotExistedLandscapeObjsAction;
+import org.simulation.service.simulation.action.WorldAction;
+import org.simulation.service.simulation.action.InitWorldMapAction;
 import org.simulation.view.ConsoleRenderer;
 import org.simulation.view.Renderer;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
-public class Simulation implements AbstractSimulation, Runnable {
+public class Simulation implements AbstractSimulation {
 
     List<WorldAction> initActions;
     List<WorldAction> turnActions;
@@ -25,28 +28,15 @@ public class Simulation implements AbstractSimulation, Runnable {
     boolean running = false;
     boolean initActionsPassed = false;
 
-    private String state = "Initial state";
-    BlockingQueue<SimulationCommand> commandQueue = new LinkedBlockingQueue<SimulationCommand>();
+    BlockingQueue<SimulationCommand> commandQueue;
 
     Renderer renderer;
 
-    public static void main(String[] args) {
-        BlockingQueue<SimulationCommand> commandQueue = new LinkedBlockingQueue<>();
-
-        Simulation testSimulation = new Simulation(commandQueue, 5, 5);
-        testSimulation.setInitWorldAction(new InitWorldMapAction());
-        testSimulation.setTurnWorldAction(new MakeMoveAction());
-        testSimulation.setTurnWorldAction(new RemoveDeadCreaturesAction());
-        testSimulation.setTurnWorldAction(new RemoveNotExistedLandscapeObjsAction());
-
-        testSimulation.startSimulation();
-    }
-
-    public Simulation(BlockingQueue<SimulationCommand> commandQueue, int n, int m) {
+    public Simulation(BlockingQueue<SimulationCommand> commandQueue) {
         this.commandQueue = commandQueue;
         this.initActions = new ArrayList<>();
         this.turnActions = new ArrayList<>();
-        this.worldMap = new WorldMap(n, m);
+        this.worldMap = new WorldMap(0, 0);
         this.renderer = new ConsoleRenderer(this.worldMap);
 
         this.setTurnWorldAction(new MakeMoveAction());
@@ -71,20 +61,15 @@ public class Simulation implements AbstractSimulation, Runnable {
             }
         };
 
-        Runnable task = new Runnable() {
-            @Override
-            public void run() {
-                renderer.render();
-//                while (commandQueue.isEmpty()) {
-                while (running) {
-                    nextMove();
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+        Runnable task = () -> {
+            renderer.render();
+            while (running) {
+                nextMove();
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
-//                commandQueue.poll();
             }
         };
 
@@ -116,49 +101,10 @@ public class Simulation implements AbstractSimulation, Runnable {
         renderer.render();
     }
 
-    public void simulationProcess() {
-        renderer.render();
-        while (running && turnCounter < 25) {
-            nextMove();
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-//        while (commandQueue.isEmpty()) {
-//            try {
-//                while(running)
-//                {
-//                    turnCounter++;
-//                    processTurnActions();
-//                    renderer.render();
-//                    break;
-//                }
-////                Thread.sleep(500);
-//            } catch (Exception e) {
-//                System.out.println("Simulation interrupted.");
-//                return;
-//            }
-//            System.out.println("Simulation process. State is \"" + state + "\".");
-//        }
-//        controller();
-    }
-
-    @Override
-    public void run() {
-        startSimulation();
-    }
-
-    private void idle() {
-        while (commandQueue.isEmpty()) {
-        }
-        controller();
-    }
-
     @Override
     public void setInitWorldAction(WorldAction action) {
         initActionsPassed = false;
+        turnCounter = 0;
 
         if (action instanceof InitWorldMapAction) {
             if (!initActions.isEmpty()) {
@@ -176,32 +122,6 @@ public class Simulation implements AbstractSimulation, Runnable {
         turnActions.add(action);
     }
 
-    private void controller() {
-        var command = commandQueue.poll();
-        switch (command) {
-            case STOP_SIMULATION -> {
-                System.out.println("Simulation stopped.");
-                idle();
-            }
-            case CONTINUE_SIMULATION -> {
-                System.out.println("Simulation continued.");
-                simulationProcess();
-            }
-            case START_SIMULATION -> {
-                System.out.println("Simulation started.");
-                simulationProcess();
-            }
-            case EXIT_SIMULATION -> {
-                System.out.println("Simulation exited.");
-            }
-            case null -> {
-                return;
-//                stopFlag = true;
-            }
-        }
-
-    }
-
     private void processInitActions() {
         for (WorldAction initAction : initActions) {
             initAction.execute(this.worldMap);
@@ -212,10 +132,6 @@ public class Simulation implements AbstractSimulation, Runnable {
         for (WorldAction turnAction : turnActions) {
             turnAction.execute(this.worldMap);
         }
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 
     @Override
