@@ -3,7 +3,8 @@ package org.simulation.service.simulation.action;
 import org.simulation.model.entity.WorldMap;
 import org.simulation.model.entity.dynamic.Creature;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class MakeMoveAction implements WorldAction{
 

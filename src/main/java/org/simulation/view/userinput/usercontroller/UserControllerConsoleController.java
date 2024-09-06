@@ -3,19 +3,13 @@ package org.simulation.view.userinput.usercontroller;
 import org.simulation.service.graph.entity.Coordinates;
 import org.simulation.service.simulation.AbstractSimulation;
 import org.simulation.service.simulation.Simulation;
-import org.simulation.service.simulation.SimulationCommand;
 import org.simulation.view.userinput.usercontroller.States.MainScreenState;
 import org.simulation.view.userinput.usercontroller.States.UserControllerState;
-
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 public class UserControllerConsoleController implements UserControllerContext {
     private UserControllerState state;
 
-    private BlockingQueue<SimulationCommand> commandQueue = new LinkedBlockingQueue<SimulationCommand>();
-
-    private AbstractSimulation simulation = new Simulation(commandQueue);
+    private AbstractSimulation simulation = new Simulation();
 
     public UserControllerConsoleController() {
         this.state = new MainScreenState(this);
@@ -134,9 +128,5 @@ public class UserControllerConsoleController implements UserControllerContext {
     @Override
     public void back() {
         state.back();
-    }
-
-    public BlockingQueue<SimulationCommand> getCommandQueue() {
-        return commandQueue;
     }
 }

@@ -2,10 +2,7 @@ package org.simulation.view.userinput.usercontroller;
 
 import org.simulation.service.graph.entity.Coordinates;
 import org.simulation.service.simulation.AbstractSimulation;
-import org.simulation.service.simulation.SimulationCommand;
 import org.simulation.view.userinput.usercontroller.States.UserControllerState;
-
-import java.util.concurrent.BlockingQueue;
 
 public interface UserControllerContext {
     void changeState(UserControllerState state);
@@ -31,5 +28,4 @@ public interface UserControllerContext {
     void addTree(Coordinates coordinates);
     void pauseSimulation();
     void back();
-    BlockingQueue<SimulationCommand> getCommandQueue();
 }

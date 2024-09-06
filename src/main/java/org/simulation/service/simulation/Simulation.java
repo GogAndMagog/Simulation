@@ -15,7 +15,6 @@ import org.simulation.view.Renderer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
 
 public class Simulation implements AbstractSimulation {
 
@@ -28,12 +27,9 @@ public class Simulation implements AbstractSimulation {
     boolean running = false;
     boolean initActionsPassed = false;
 
-    BlockingQueue<SimulationCommand> commandQueue;
-
     Renderer renderer;
 
-    public Simulation(BlockingQueue<SimulationCommand> commandQueue) {
-        this.commandQueue = commandQueue;
+    public Simulation() {
         this.initActions = new ArrayList<>();
         this.turnActions = new ArrayList<>();
         this.worldMap = new WorldMap(0, 0);

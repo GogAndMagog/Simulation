@@ -1,7 +1,6 @@
 package org.simulation.view.userinput.usercontroller.States;
 
 import org.simulation.service.graph.entity.Coordinates;
-import org.simulation.service.simulation.SimulationCommand;
 import org.simulation.view.userinput.Dialog;
 import org.simulation.view.userinput.screen.InterruptSimulationScreen;
 import org.simulation.view.userinput.screen.Screen;
