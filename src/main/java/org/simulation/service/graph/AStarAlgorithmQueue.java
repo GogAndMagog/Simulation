@@ -3,7 +3,15 @@ package org.simulation.service.graph;
 import org.simulation.service.graph.distancecalculationheuristic.DistanceCalculator;
 import org.simulation.service.graph.entity.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.PriorityQueue;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Collections;
 
 public class AStarAlgorithmQueue implements PathFinder<String, AStarNode, AStarGraph> {
 
@@ -70,7 +78,7 @@ public class AStarAlgorithmQueue implements PathFinder<String, AStarNode, AStarG
 
     private void calculateHeuristicAndPriority(AStarGraph graph, String baseNode, String targetNode) {
 
-        AStarNode baseAStarNode = graph.getNodeById(baseNode);
+//        AStarNode baseAStarNode = graph.getNodeById(baseNode);
         AStarNode targetAStarNode = graph.getNodeById(targetNode);
 
         for (AStarNode currentNode : graph.getNodes()) {

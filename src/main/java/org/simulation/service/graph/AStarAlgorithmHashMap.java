@@ -5,7 +5,11 @@ import org.simulation.service.graph.entity.AStarGraph;
 import org.simulation.service.graph.entity.AStarNode;
 import org.simulation.service.graph.entity.Coordinates;
 
-import java.util.*;
+import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class AStarAlgorithmHashMap implements PathFinder<String, AStarNode, AStarGraph> {
 

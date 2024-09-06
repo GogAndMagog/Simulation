@@ -4,7 +4,15 @@ import org.simulation.service.graph.entity.Coordinates;
 import org.simulation.service.graph.entity.DijkstraGraph;
 import org.simulation.service.graph.entity.DijkstraNode;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Queue;
+import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.HashMap;
+
 
 public class DijkstraAlgorithmQueue implements PathFinder<String, DijkstraNode, DijkstraGraph> {
 

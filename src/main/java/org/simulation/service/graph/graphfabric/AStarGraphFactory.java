@@ -116,7 +116,4 @@ public class AStarGraphFactory implements GraphAbstractFabric<AStarGraph> {
         else
             return true;
     }
-
-
-
 }
