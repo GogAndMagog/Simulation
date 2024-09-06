@@ -3,7 +3,6 @@ package org.simulation.view.userinput.usercontroller.States;
 import org.simulation.model.entity.dynamic.carnivore.Wolf;
 import org.simulation.model.entity.dynamic.herbivore.Sheep;
 import org.simulation.service.graph.entity.Coordinates;
-import org.simulation.view.userinput.Dialog;
 import org.simulation.view.userinput.screen.AddCreaturesScreen;
 import org.simulation.view.userinput.screen.Screen;
 import org.simulation.view.userinput.usercontroller.UserControllerContext;
@@ -14,16 +13,6 @@ public class AddCreaturesState implements UserControllerState {
 
     AddCreaturesState(UserControllerContext userControllerContext) {
         this.userControllerContext = userControllerContext;
-    }
-
-    @Override
-    public void Execute(int command) {
-
-    }
-
-    @Override
-    public Dialog getMessage() {
-        return null;
     }
 
     @Override

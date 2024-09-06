@@ -1,8 +1,12 @@
 package org.simulation.view.userinput.screen;
 
-import org.simulation.view.userinput.*;
-import org.simulation.view.userinput.usercontroller.States.MainScreenState;
 import org.simulation.view.userinput.usercontroller.UserControllerContext;
+
+import org.simulation.view.userinput.Info;
+import org.simulation.view.userinput.Dialog;
+import org.simulation.view.userinput.UserInputValidation;
+import org.simulation.view.userinput.ConsoleDialog;
+import org.simulation.view.userinput.ConsoleInfo;
 
 public class InterruptSimulationScreen implements Screen{
     UserControllerContext userControllerContext;

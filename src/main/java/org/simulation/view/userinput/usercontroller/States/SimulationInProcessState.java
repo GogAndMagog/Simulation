@@ -1,7 +1,6 @@
 package org.simulation.view.userinput.usercontroller.States;
 
 import org.simulation.service.graph.entity.Coordinates;
-import org.simulation.view.userinput.Dialog;
 import org.simulation.view.userinput.screen.InterruptSimulationScreen;
 import org.simulation.view.userinput.screen.Screen;
 import org.simulation.view.userinput.usercontroller.UserControllerContext;
@@ -13,16 +12,6 @@ public class SimulationInProcessState implements UserControllerState {
     public SimulationInProcessState(UserControllerContext userControllerContext) {
         this.userControllerContext = userControllerContext;
         screen = new InterruptSimulationScreen(userControllerContext);
-    }
-
-    @Override
-    public void Execute(int command) {
-
-    }
-
-    @Override
-    public Dialog getMessage() {
-        return null;
     }
 
     @Override
@@ -125,12 +114,6 @@ public class SimulationInProcessState implements UserControllerState {
         userControllerContext.getSimulation().pauseSimulation();
         userControllerContext.changeState(new MainScreenState(userControllerContext));
         userControllerContext.showScreen();
-//        var commandQueue = userControllerContext.getCommandQueue();
-//        try {
-//            commandQueue.put(SimulationCommand.STOP_SIMULATION);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     @Override

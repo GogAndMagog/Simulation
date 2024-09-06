@@ -18,16 +18,6 @@ public class AddTerrainSate implements UserControllerState{
     }
 
     @Override
-    public void Execute(int command) {
-
-    }
-
-    @Override
-    public Dialog getMessage() {
-        return null;
-    }
-
-    @Override
     public Screen getScreen() {
         return new AddTerrainScreen(userControllerContext);
     }

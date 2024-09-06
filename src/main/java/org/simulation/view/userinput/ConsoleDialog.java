@@ -1,6 +1,8 @@
 package org.simulation.view.userinput;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
 public class ConsoleDialog implements Dialog{
 

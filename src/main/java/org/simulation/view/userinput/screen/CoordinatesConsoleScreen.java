@@ -1,7 +1,13 @@
 package org.simulation.view.userinput.screen;
 
 import org.simulation.service.graph.entity.Coordinates;
-import org.simulation.view.userinput.*;
+
+import org.simulation.view.userinput.Info;
+import org.simulation.view.userinput.Dialog;
+import org.simulation.view.userinput.UserInputValidation;
+import org.simulation.view.userinput.ConsoleDialog;
+import org.simulation.view.userinput.ConsoleInfo;
+import org.simulation.view.userinput.ConsoleUserInputValidation;
 
 public class CoordinatesConsoleScreen implements CoordinatesScreen {
 
@@ -18,11 +24,6 @@ public class CoordinatesConsoleScreen implements CoordinatesScreen {
     Info info;
     Dialog dialog;
     UserInputValidation validation;
-
-    public static void main(String[] args) {
-        CoordinatesConsoleScreen screen = new CoordinatesConsoleScreen();
-        screen.display();
-    }
 
     private CoordinatesConsoleScreen() {
         this.dialog = ConsoleDialog.getInstance();

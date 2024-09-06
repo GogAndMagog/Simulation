@@ -2,51 +2,9 @@ package org.simulation.view;
 
 import org.simulation.model.entity.Icons;
 import org.simulation.model.entity.WorldMap;
-import org.simulation.model.entity.dynamic.carnivore.Wolf;
-import org.simulation.model.entity.dynamic.herbivore.Sheep;
-import org.simulation.model.entity.statical.terrain.Herb;
-import org.simulation.model.entity.statical.terrain.Road;
-import org.simulation.model.entity.statical.terrain.Sand;
 import org.simulation.service.graph.entity.Coordinates;
 
 public class ConsoleRenderer implements Renderer {
-
-    private static final String BLANK = " ";
-    private static final String TAB = "\t";
-    private static final String ANSI_RED = "\u001B[31m";
-    private static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
-    private static final String ANSI_RESET = "\u001B[0m";
-
-
-    public static void main(String[] args) {
-
-        String WOLF = "\uD83D\uDC3A";
-        String LAMB = "\uD83D\uDC11";
-        String MOUNTAIN = "\u26F0\uFE0F";
-        String SNOW_MOUNTAIN = "\uD83C\uDFD4\uFE0F";
-        String HERB = "\uD83C\uDF3F";
-        String GREEN_SQUARE = "\uD83D\uDFE9";
-        String TREE = "\uD83C\uDF33";
-        StringBuilder sb = new StringBuilder();
-
-        WorldMap worldMap = new WorldMap(3, 3);
-        Renderer renderer = new ConsoleRenderer(worldMap);
-
-        worldMap.setCreature(new Wolf(new Coordinates(0, 0), worldMap,10,10, 10));
-        worldMap.setCreature(new Wolf(new Coordinates(1, 0), worldMap, 10, 10, 10));
-        worldMap.setCreature(new Wolf(new Coordinates(0, 1), worldMap, 10, 10, 10));
-        worldMap.setCreature(new Sheep(new Coordinates(1, 1), worldMap, 10, 10));
-        worldMap.setCreature(new Sheep(new Coordinates(2, 2), worldMap, 10, 10));
-        worldMap.setLandscapeObject(new Sand(new Coordinates(0,0)));
-        worldMap.setLandscapeObject(new Sand(new Coordinates(1,0)));
-        worldMap.setLandscapeObject(new Herb(new Coordinates(0,1)));
-        worldMap.setLandscapeObject(new Road(new Coordinates(1,1)));
-        worldMap.setLandscapeObject(new Road(new Coordinates(2,1)));
-
-
-        renderer.render();
-
-    }
 
     WorldMap worldMap;
 

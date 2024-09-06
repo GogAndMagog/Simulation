@@ -1,6 +1,11 @@
 package org.simulation.view.userinput.screen;
 
-import org.simulation.view.userinput.*;
+import org.simulation.view.userinput.ConsoleDialog;
+import org.simulation.view.userinput.Dialog;
+import org.simulation.view.userinput.Info;
+import org.simulation.view.userinput.UserInputValidation;
+import org.simulation.view.userinput.ConsoleInfo;
+import org.simulation.view.userinput.ConsoleUserInputValidation;
 
 public class YesNoConsoleScreen implements BooleanScreen {
 
@@ -19,17 +24,6 @@ public class YesNoConsoleScreen implements BooleanScreen {
     Info info;
     Dialog dialog;
     UserInputValidation validation;
-
-    public static void main(String[] args) {
-
-        String textBlock = """
-                String  %s \s
-                test""".formatted("Parameter");
-
-        System.out.println(textBlock);
-//        BooleanScreen screen =  YesNoScreen.getInstance();
-//        System.out.println(screen.display());
-    }
 
     private YesNoConsoleScreen() {
         this.dialog = ConsoleDialog.getInstance();

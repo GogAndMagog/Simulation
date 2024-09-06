@@ -2,7 +2,6 @@ package org.simulation.view.userinput.usercontroller.States;
 
 import org.simulation.service.graph.entity.Coordinates;
 import org.simulation.service.simulation.action.InitWorldMapAction;
-import org.simulation.view.userinput.Dialog;
 import org.simulation.view.userinput.screen.MapChooseScreen;
 import org.simulation.view.userinput.screen.Screen;
 import org.simulation.view.userinput.usercontroller.UserControllerContext;
@@ -15,16 +14,6 @@ public class MapChooseState implements UserControllerState {
     public MapChooseState(UserControllerContext userControllerContext) {
         this.userControllerContext = userControllerContext;
         mapChooseScreen = new MapChooseScreen(userControllerContext);
-    }
-
-    @Override
-    public void Execute(int command) {
-
-    }
-
-    @Override
-    public Dialog getMessage() {
-        return null;
     }
 
     @Override

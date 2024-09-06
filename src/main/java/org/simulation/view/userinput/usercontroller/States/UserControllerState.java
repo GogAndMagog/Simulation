@@ -5,8 +5,6 @@ import org.simulation.view.userinput.Dialog;
 import org.simulation.view.userinput.screen.Screen;
 
 public interface UserControllerState {
-    void Execute(int command);
-    Dialog getMessage();
     public Screen getScreen();
     public void chooseMap();
     public void addCreatures();
