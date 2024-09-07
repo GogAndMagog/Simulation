@@ -34,8 +34,11 @@ public class WorldMap {
             object.setWorldMap(this);
         } else
             throw new IllegalArgumentException("""
-                    Размер поля: %d %d
-                    """.formatted(this.getX(), this.getY()));
+                    Размер поля: %d %d, вводимое значение %d %d
+                    """.formatted(this.getX(),
+                    this.getY(),
+                    object.getPosition().getX(),
+                    object.getPosition().getY()));
     }
 
     public void setCreature(Creature creature) {
@@ -44,8 +47,11 @@ public class WorldMap {
             creature.setWorldMap(this);
         } else
             throw new IllegalArgumentException("""
-                    Размер поля: %d %d
-                    """.formatted(this.getX(), this.getY()));
+                    Размер поля: %d %d, вводимое значение %d %d
+                    """.formatted(this.getX(),
+                    this.getY(),
+                    creature.getPosition().getX(),
+                    creature.getPosition().getY()));
     }
 
     public HashMap<Coordinates, LandscapeObject> getLandscape() {

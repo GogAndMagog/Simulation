@@ -10,6 +10,7 @@ import org.simulation.service.simulation.action.RemoveDeadCreaturesAction;
 import org.simulation.service.simulation.action.RemoveNotExistedLandscapeObjsAction;
 import org.simulation.service.simulation.action.WorldAction;
 import org.simulation.service.simulation.action.InitWorldMapAction;
+import org.simulation.service.simulation.exception.MapNotSetException;
 import org.simulation.view.ConsoleRenderer;
 import org.simulation.view.Renderer;
 
@@ -53,7 +54,7 @@ public class Simulation implements AbstractSimulation {
         Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread th, Throwable ex) {
-                System.out.println("Uncaught exception: " + ex);
+               throw new RuntimeException(ex);
             }
         };
 
@@ -149,7 +150,7 @@ public class Simulation implements AbstractSimulation {
     private void checkMap() {
         if (this.worldMap == null
                 || (this.worldMap.getX() == 0 && this.worldMap.getY() == 0)) {
-            throw new RuntimeException("Карта не выбрана!");
+            throw new MapNotSetException();
         }
     }
 
