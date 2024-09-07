@@ -2,6 +2,7 @@ package org.simulation.view;
 
 import org.simulation.model.entity.Icons;
 import org.simulation.model.entity.WorldMap;
+import org.simulation.model.entity.statical.terrain.Terrain;
 import org.simulation.service.graph.entity.Coordinates;
 
 public class ConsoleRenderer implements Renderer {
@@ -23,8 +24,13 @@ public class ConsoleRenderer implements Renderer {
         for (int i = 0; i < worldMap.getY(); i++) {
             for (int j = 0; j < worldMap.getX(); j++) {
                 currentPosition = new Coordinates(j, i);
+
                 if (worldMap.getLandscape().get(currentPosition) != null) {
                     sb.append(worldMap.getLandscape().get(currentPosition).getIcon());
+
+                    if (!(worldMap.getLandscape().get(currentPosition) instanceof Terrain)) {
+                        continue;
+                    }
                 }
                 if (worldMap.getCreatures().get(currentPosition) != null) {
                     sb.append(worldMap.getCreatures().get(currentPosition).getIcon());
