@@ -10,6 +10,7 @@ public final class Icons {
     //landscape objects
     public static final String ICON_ROCK = "\u26F0\uFE0F";
     public static final String ICON_TREE = "\uD83C\uDF33";
+    public static final String ICON_FACTORY = "\uD83C\uDFED";
 
     //creatures
     public static final String ICON_WOLF = "\uD83D\uDC3A";
