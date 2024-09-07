@@ -29,7 +29,7 @@ public class CoordinatesConsoleScreen implements CoordinatesScreen {
         this.dialog = ConsoleDialog.getInstance();
         this.info = ConsoleInfo.getInstance();
         this.validation = new ConsoleUserInputValidation();
-        this.validation.setValidationPattern("\\s*\\d+\\s*\\d+\\s*");
+        this.validation.setValidationPattern("\\s*\\d+\\s+\\d+\\s*");
     }
 
     @Override
