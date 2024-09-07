@@ -111,6 +111,11 @@ public class AddLandscapeObjectState implements UserControllerState{
     }
 
     @Override
+    public void addFactory(Coordinates coordinates) {
+
+    }
+
+    @Override
     public void pauseSimulation() {
 
     }

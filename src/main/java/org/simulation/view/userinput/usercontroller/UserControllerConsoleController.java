@@ -116,6 +116,11 @@ public class UserControllerConsoleController implements UserControllerContext {
     }
 
     @Override
+    public void addFactory(Coordinates coordinates) {
+        state.addFactory(coordinates);
+    }
+
+    @Override
     public void pauseSimulation() {
         state.pauseSimulation();
     }

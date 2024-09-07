@@ -26,6 +26,7 @@ public interface UserControllerContext {
     void addRoad(Coordinates coordinates);
     void addRock(Coordinates coordinates);
     void addTree(Coordinates coordinates);
+    void addFactory(Coordinates coordinates);
     void pauseSimulation();
     void back();
 }

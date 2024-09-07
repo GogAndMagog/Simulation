@@ -1,30 +1,29 @@
 package org.simulation.view.userinput.usercontroller.States;
 
 import org.simulation.service.graph.entity.Coordinates;
-import org.simulation.view.userinput.Dialog;
 import org.simulation.view.userinput.screen.Screen;
 
 public interface UserControllerState {
-    public Screen getScreen();
-    public void chooseMap();
-    public void addCreatures();
-    public void addLandscapeObj();
-    public void makeSimulationMove();
-    public void runSimulation();
-    public void exit();
-    public void chooseSandyWorld();
-    public void chooseGreenWorld();
-    public void chooseIndustrialWorld();
-    public void addWolf(Coordinates coordinates);
-    public void addSheep(Coordinates coordinates);
-    public void addTerrain();
-    public void addStaticObj();
-    public void addHerb(Coordinates coordinates);
-    public void addSand(Coordinates coordinates);
-    public void addRoad(Coordinates coordinates);
-    public void addRock(Coordinates coordinates);
-    public void addTree(Coordinates coordinates);
-    public void pauseSimulation();
-    public void back();
-
+    Screen getScreen();
+    void chooseMap();
+    void addCreatures();
+    void addLandscapeObj();
+    void makeSimulationMove();
+    void runSimulation();
+    void exit();
+    void chooseSandyWorld();
+    void chooseGreenWorld();
+    void chooseIndustrialWorld();
+    void addWolf(Coordinates coordinates);
+    void addSheep(Coordinates coordinates);
+    void addTerrain();
+    void addStaticObj();
+    void addHerb(Coordinates coordinates);
+    void addSand(Coordinates coordinates);
+    void addRoad(Coordinates coordinates);
+    void addRock(Coordinates coordinates);
+    void addTree(Coordinates coordinates);
+    void addFactory(Coordinates coordinates);
+    void pauseSimulation();
+    void back();
 }

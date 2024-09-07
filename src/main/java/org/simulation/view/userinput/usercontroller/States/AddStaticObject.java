@@ -1,5 +1,6 @@
 package org.simulation.view.userinput.usercontroller.States;
 
+import org.simulation.model.entity.statical.Factory;
 import org.simulation.model.entity.statical.Rock;
 import org.simulation.model.entity.statical.Tree;
 import org.simulation.service.graph.entity.Coordinates;
@@ -110,6 +111,13 @@ public class AddStaticObject implements UserControllerState{
     @Override
     public void addTree(Coordinates coordinates) {
         userControllerContext.getSimulation().addLandscapeObject(new Tree(coordinates));
+        userControllerContext.getSimulation().renderMap();
+        userControllerContext.showScreen();
+    }
+
+    @Override
+    public void addFactory(Coordinates coordinates) {
+        userControllerContext.getSimulation().addLandscapeObject(new Factory(coordinates));
         userControllerContext.getSimulation().renderMap();
         userControllerContext.showScreen();
     }

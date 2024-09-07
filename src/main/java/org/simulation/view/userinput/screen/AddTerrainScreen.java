@@ -50,19 +50,13 @@ public class AddTerrainScreen implements Screen {
         boolean passed = false;
         switch (Integer.parseInt(userInput)) {
             case 1:
-                while (!passed) {
-                    passed = addHerb();
-                };
+                addHerb();
                 break;
             case 2:
-                while (!passed) {
-                    passed = addSand();
-                };
+                addSand();
                 break;
             case 3:
-                while (!passed) {
-                    passed = addRoad();
-                };
+                addRoad();
                 break;
             case 4:
                 userControllerContext.back();
@@ -72,36 +66,33 @@ public class AddTerrainScreen implements Screen {
         }
     }
 
-    private boolean addHerb() {
+    private void addHerb() {
         try {
             Coordinates coordinates = CoordinatesConsoleScreen.getInstance().display();
             userControllerContext.addHerb(coordinates);
-            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
+            userControllerContext.showScreen();
         }
     }
 
-    private boolean addSand() {
+    private void addSand() {
         try {
             Coordinates coordinates = CoordinatesConsoleScreen.getInstance().display();
             userControllerContext.addSand(coordinates);
-            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
+            userControllerContext.showScreen();
         }
     }
 
-    private boolean addRoad() {
+    private void addRoad() {
         try {
             Coordinates coordinates = CoordinatesConsoleScreen.getInstance().display();
             userControllerContext.addRoad(coordinates);
-            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
+            userControllerContext.showScreen();
         }
     }
 }

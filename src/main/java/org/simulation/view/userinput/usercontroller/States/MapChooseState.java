@@ -113,6 +113,11 @@ public class MapChooseState implements UserControllerState {
     }
 
     @Override
+    public void addFactory(Coordinates coordinates) {
+
+    }
+
+    @Override
     public void pauseSimulation() {
 
     }

@@ -6,7 +6,7 @@ import org.simulation.model.entity.statical.LandscapeObject;
 import org.simulation.service.simulation.action.WorldAction;
 
 public interface AbstractSimulation {
-    void startSimulation();
+    void startSimulation(Thread.UncaughtExceptionHandler handler);
     void pauseSimulation();
     void nextMove();
     void setInitWorldAction(WorldAction action);

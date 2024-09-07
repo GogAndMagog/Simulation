@@ -1,6 +1,7 @@
 package org.simulation.view.userinput.usercontroller.States;
 
 import org.simulation.service.graph.entity.Coordinates;
+import org.simulation.view.userinput.ConsoleInfo;
 import org.simulation.view.userinput.screen.MainConsoleScreen;
 import org.simulation.view.userinput.screen.Screen;
 import org.simulation.view.userinput.usercontroller.UserControllerContext;
@@ -51,7 +52,7 @@ public class MainScreenState implements UserControllerState {
     @Override
     public void runSimulation() {
         try {
-            userControllerContext.getSimulation().startSimulation();
+            userControllerContext.getSimulation().startSimulation((t, e) -> ConsoleInfo.getInstance().showInfo(e.getMessage()));//"Ошибка при запуске симуляции"));
             userControllerContext.changeState(new SimulationInProcessState(userControllerContext));
             userControllerContext.showScreen();
         } catch (Exception e) {
@@ -121,6 +122,11 @@ public class MainScreenState implements UserControllerState {
 
     @Override
     public void addTree(Coordinates coordinates) {
+    }
+
+    @Override
+    public void addFactory(Coordinates coordinates) {
+
     }
 
     @Override

@@ -42,7 +42,7 @@ public class Simulation implements AbstractSimulation {
     }
 
     @Override
-    public void startSimulation() {
+    public void startSimulation(Thread.UncaughtExceptionHandler handler) {
         if (!initActionsPassed) {
             initActionsPassed = true;
             processInitActions();
@@ -50,13 +50,6 @@ public class Simulation implements AbstractSimulation {
         }
 
         running = true;
-
-        Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread th, Throwable ex) {
-               throw new RuntimeException(ex);
-            }
-        };
 
         Runnable task = () -> {
             renderer.render();
@@ -71,7 +64,7 @@ public class Simulation implements AbstractSimulation {
         };
 
         Thread t = new Thread(task);
-        t.setUncaughtExceptionHandler(h);
+        t.setUncaughtExceptionHandler(handler);
         t.start();
     }
 

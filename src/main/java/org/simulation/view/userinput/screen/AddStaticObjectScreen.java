@@ -11,14 +11,15 @@ import org.simulation.view.userinput.ConsoleDialog;
 import org.simulation.view.userinput.ConsoleInfo;
 import org.simulation.view.userinput.ConsoleUserInputValidation;
 
-public class AddStaticObjectScreen implements Screen{
+public class AddStaticObjectScreen implements Screen {
     UserControllerContext userControllerContext;
 
     private final String SCREEN_MESSAGE = """
             Добавить статичный объкт:
             1. Добавить камень
             2. Добавить дерево
-            3. Назад""";
+            3. Добавить фабрику
+            4. Назад""";
     private final String ERROR_MESSAGE = "Неверный ввод!";
 
     Info info;
@@ -30,7 +31,7 @@ public class AddStaticObjectScreen implements Screen{
         this.dialog = ConsoleDialog.getInstance();
         this.info = ConsoleInfo.getInstance();
         this.validation = new ConsoleUserInputValidation();
-        this.validation.setValidationPattern("[1-3]");
+        this.validation.setValidationPattern("[1-4]");
     }
 
     @Override
@@ -49,16 +50,15 @@ public class AddStaticObjectScreen implements Screen{
         boolean passed = false;
         switch (Integer.parseInt(userInput)) {
             case 1:
-                while (!passed) {
-                    passed = addRock();
-                };
+                addRock();
                 break;
             case 2:
-                while (!passed) {
-                    passed = addTree();
-                };
+                addTree();
                 break;
             case 3:
+                addFabric();
+                break;
+            case 4:
                 userControllerContext.back();
                 break;
             default:
@@ -66,25 +66,33 @@ public class AddStaticObjectScreen implements Screen{
         }
     }
 
-    private boolean addRock() {
+    private void addRock() {
         try {
             Coordinates coordinates = CoordinatesConsoleScreen.getInstance().display();
             userControllerContext.addRock(coordinates);
-            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
+            userControllerContext.showScreen();
         }
     }
 
-    private boolean addTree() {
+    private void addTree() {
         try {
             Coordinates coordinates = CoordinatesConsoleScreen.getInstance().display();
             userControllerContext.addTree(coordinates);
-            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
+            userControllerContext.showScreen();
+        }
+    }
+
+    private void addFabric() {
+        try {
+            Coordinates coordinates = CoordinatesConsoleScreen.getInstance().display();
+            userControllerContext.addFactory(coordinates);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            userControllerContext.showScreen();
         }
     }
 }

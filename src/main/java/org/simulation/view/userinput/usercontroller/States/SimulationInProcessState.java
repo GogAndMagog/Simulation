@@ -110,6 +110,11 @@ public class SimulationInProcessState implements UserControllerState {
     }
 
     @Override
+    public void addFactory(Coordinates coordinates) {
+
+    }
+
+    @Override
     public void pauseSimulation() {
         userControllerContext.getSimulation().pauseSimulation();
         userControllerContext.changeState(new MainScreenState(userControllerContext));
