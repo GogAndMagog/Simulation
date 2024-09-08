@@ -9,7 +9,7 @@ public class MainConsoleScreen implements Screen {
     UserControllerContext userControllerContext;
 
     private final String SCREEN_MESSAGE = """
-            Стартовый экран
+            Стартовый экран:
             1. Выбрать карту
             2. Добавить животных
             3. Добавить объект ландшафта

@@ -18,7 +18,7 @@ public class CoordinatesConsoleScreen implements CoordinatesScreen {
 
 
     private final String SCREEN_MESSAGE = """
-        Введите координаты(x, y):""";
+        Введите координаты, через пробел(x, y):""";
     private final String ERROR_MESSAGE = "Неверный ввод!";
 
     Info info;
