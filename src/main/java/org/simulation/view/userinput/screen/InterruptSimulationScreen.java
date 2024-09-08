@@ -12,7 +12,7 @@ public class InterruptSimulationScreen implements Screen{
     UserControllerContext userControllerContext;
 
     private final String SCREEN_MESSAGE = """
-            Нажмите любой ввод, чтобы прервать.""";
+            Сделайте любой ввод, чтобы прервать симуляцию.""";
 
     Info info;
     Dialog dialog;
